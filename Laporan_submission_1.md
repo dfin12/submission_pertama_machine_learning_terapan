@@ -149,9 +149,9 @@ Tahap Modeling merupakan inti dari proyek machine learning ini, di mana model-mo
 
 3. Pemilihan Model Terbaik
 
-Berdasarkan analisis stabilitas akurasi antara data latih dan data uji, serta kinerja generalisasi, model K-Nearest Neighbors (KNN) dipilih sebagai model terbaik untuk klasifikasi posisi pemain dalam proyek ini.
+Berdasarkan kajian mengenai kestabilan akurasi antara data latih dan data uji, serta kemampuan generalisasi, model K-Nearest Neighbors (KNN) dipilih sebagai model yang paling unggul untuk mengklasifikasikan posisi pemain dalam proyek ini.
 
-Jika akurasi pelatihan dan pengujian KNN menunjukkan stabilitas yang lebih baik (perbedaan yang lebih kecil) dibandingkan dengan Random Forest, ini mengindikasikan bahwa KNN memiliki kemampuan generalisasi yang lebih baik dan lebih sedikit mengalami overfitting pada dataset ini. Meskipun Random Forest mungkin mencapai akurasi training yang sangat tinggi, perbedaan yang signifikan dengan akurasi testing menandakan bahwa model Random Forest cenderung terlalu menghafal pola pada data latih dan kurang mampu beradaptasi dengan data baru. KNN, dengan stabilitasnya, lebih dapat diandalkan untuk memprediksi posisi pemain yang belum pernah dilihat sebelumnya.
+Apabila akurasi pelatihan dan pengujian KNN menunjukkan kestabilan yang lebih baik (dengan perbedaan yang lebih kecil) dibandingkan dengan Random Forest, hal ini menandakan bahwa KNN memiliki kemampuan generalisasi yang lebih baik dan mengalami overfitting yang lebih sedikit pada dataset ini. Walaupun Random Forest dapat mencapai tingkat akurasi yang sangat baik pada data pelatihan, perbedaan besar dalam akurasi pengujian menunjukkan bahwa model ini cenderung terlalu mengingat pola pada data latih dan kurang efektif dalam menyesuaikan diri dengan data yang baru. KNN, karena stabilitasnya, lebih tepercaya dalam memprediksi lokasi pemain yang belum pernah diperhatikan sebelumnya.
 
 ## Evaluasi
 
