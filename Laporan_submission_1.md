@@ -2,9 +2,9 @@
 
 ## Domain proyek
 
-Sepak bola adalah olahraga paling populer di dunia, dengan jutaan penggemar dan pemain di seluruh dunia. Dalam olahraga ini, penentuan posisi pemain yang tepat sangat krusial untuk kesuksesan tim. Setiap posisi memiliki peran dan membutuhkan karakteristik skill yang berbeda. Misalnya, seorang penyerang membutuhkan kemampuan menembak dan kecepatan yang tinggi, sementara seorang bek membutuhkan kemampuan bertahan dan fisik yang kuat. Penempatan pemain yang tidak sesuai dengan keahliannya dapat menghambat performa tim secara keseluruhan.
+Sepak bola merupakan cabang olahraga yang paling banyak digemari di seluruh dunia, dengan jutaan penggemar serta pemain yang tersebar di berbagai penjuru. Di dalam cabang ini, penempatan posisi pemain yang tepat sangat penting untuk keberhasilan tim. Setiap posisi memiliki fungsi tersendiri dan memerlukan kemampuan yang berbeda. Contohnya, seorang penyerang harus memiliki keterampilan menembak dan kecepatan tinggi, sedangkan seorang bek diharuskan memiliki kekuatan fisik dan kemampuan bertahan. Penempatan pemain yang tidak sesuai dengan keahlian masing-masing dapat mengganggu kinerja keseluruhan tim.
 
-Secara tradisional, penentuan posisi pemain seringkali didasarkan pada pengamatan subjektif oleh pelatih atau scout. Meskipun pengalaman dan intuisi memiliki perannya, metode ini rentan terhadap bias dan mungkin tidak selalu optimal dalam mengidentifikasi potensi penuh seorang pemain. Seiring dengan kemajuan teknologi dan ketersediaan data yang melimpah dalam dunia olahraga, pendekatan berbasis data dan Artificial Intelligence (AI) menawarkan solusi yang lebih objektif dan efisien.
+Secara umum, penentuan posisi pemain sering kali didasarkan pada pandangan subjektif dari pelatih atau pengamat. Walau pengalaman dan intuisi dapat berperan, cara ini sering kali dipengaruhi oleh bias dan mungkin tidak selalu efektif dalam menemukan potensi maksimal seorang pemain. Dengan perkembangan teknologi dan akses data yang melimpah dalam bidang olahraga, pendekatan yang berlandaskan data dan Kecerdasan Buatan (AI) menawarkan cara yang lebih objektif dan efisien.
 
 Proyek ini bertujuan untuk membangun model klasifikasi posisi pemain sepak bola berdasarkan atribut skill mereka. Dengan memanfaatkan dataset "`players_21.csv`" yang saya peroleh dari Kaggle (sesuai dengan kode Anda) dan berisi berbagai data skill pemain dari FIFA 21, proyek ini akan mengelompokkan pemain ke dalam empat kategori posisi utama: Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`). Atribut skill yang digunakan meliputi `pace`, `shooting`, `passing`, `defending`, `physic`, `dribbling`, dan `gk_skill` (skill penjaga gawang).
 
@@ -16,73 +16,74 @@ Pemanfaatan machine learning dalam analisis performa pemain telah menunjukkan po
 
 ### Problem Statement
 
-Dalam dunia sepak bola modern, penentuan posisi pemain yang optimal adalah kunci untuk membangun tim yang kuat dan efektif. Metode tradisional yang mengandalkan observasi subjektif oleh pelatih atau scout seringkali tidak efisien dan rentan terhadap bias. Ini dapat mengakibatkan:
-- *Ketidakcocokan posisi*: Pemain ditempatkan pada posisi yang tidak sesuai dengan skill dan karakteristik terbaik mereka, sehingga menghambat performa individu dan tim secara keseluruhan.
-- *Pengambilan keputusan yang suboptimal*: Pelatih kesulitan dalam menentukan formasi tim atau strategi pertandingan yang paling efektif karena kurangnya analisis objektif terhadap kemampuan spesifik pemain.
-- *Potensi pemain tidak termanfaatkan*: Bakat pemain tidak berkembang secara maksimal karena tidak ada sistem yang sistematis untuk mengidentifikasi kekuatan dan kelemahan skill mereka secara objektif.
+Dalam sepak bola masa kini, menentukan posisi ideal untuk para pemain sangat penting dalam membentuk tim yang tangguh dan efisien. Pendekatan klasik yang bergantung pada penilaian subjektif dari pelatih atau pencari bakat seringkali tidak efektif dan rentan terhadap prasangka. Hal ini bisa menyebabkan:
+- *Ketidaksesuaian posisi*: Pemain diletakkan pada posisi yang tidak sejalan dengan kemampuan dan karakteristik terbaik mereka, sehingga menghambat kinerja individu dan tim secara keseluruhan.
+- *Keputusan yang tidak optimal*: Pelatih menghadapi kesulitan dalam memilih formasi tim atau strategi pertandingan yang paling tepat karena minimnya analisis objektif tentang kemampuan spesifik pemain.
+- *Potensi pemain terabaikan*: Bakat pemain tidak dapat berkembang sepenuhnya karena tidak ada sistem yang teratur untuk mengenali kekuatan dan kelemahan keterampilan mereka secara objektif.
 
 ### Goal
 
-Proyek ini memiliki tujuan utama sebagai berikut:
-- Membangun model machine learning yang mampu mengklasifikasikan posisi pemain sepak bola (Penjaga Gawang, Bertahan, Gelandang, Penyerang) berdasarkan atribut skill mereka.
-- Menyediakan alat bantu objektif bagi pelatih, scout, dan manajer tim untuk membuat keputusan yang lebih baik dalam penempatan dan pengembangan pemain.
-- Meningkatkan efisiensi proses identifikasi bakat dan formasi tim dengan memanfaatkan data skill pemain.
+Proyek ini memiliki sasaran utama sebagai berikut:
+- Mengembangkan model pembelajaran mesin yang dapat mengategorikan posisi pemain sepak bola (Penjaga Gawang, Bertahan, Gelandang, Penyerang) berdasarkan karakteristik kemampuan mereka.
+- Menawarkan alat yang bersifat objektif bagi pelatih, pencari bakat, dan manajer tim untuk mengambil keputusan yang lebih baik terkait penempatan dan pengembangan pemain.
+- Meningkatkan efisiensi dalam proses menemukan bakat dan menyusun tim dengan menggunakan data tentang keterampilan pemain.
 
 ### Solution Statement
 
-Untuk mencapai tujuan di atas, proyek ini akan mengimplementasikan solusi berbasis machine learning dengan langkah-langkah terukur:
-Pemanfaatan Dua Model Klasifikasi untuk Perbandingan Performa:
-  - Mengembangkan dua model klasifikasi yang berbeda:
-    - *K-Nearest Neighbors (KNN)*: Model ini akan mengklasifikasikan pemain berdasarkan kedekatan skill mereka dengan pemain lain yang sudah diketahui posisinya. Kami akan melakukan hyperparameter tuning untuk mencari nilai `n_neighbors` (misalnya, melalui validasi silang) yang menghasilkan akurasi terbaik.
-    - *Random Forest*: Model ini akan menggunakan ensemble dari decision tree untuk membuat prediksi yang lebih robust dan akurat. Kami akan mengeksplorasi hyperparameter seperti n_estimators dan max_depth untuk mengoptimalkan kinerja model.
-  - Metrik Evaluasi: Performa kedua model akan dievaluasi dan dibandingkan menggunakan metrik berikut:
-    - *Akurasi (Accuracy Score)*: Mengukur proporsi prediksi yang benar dari total prediksi.
-    - *Confusion Matrix*: Memberikan gambaran rinci tentang benar positif, benar negatif, salah positif, dan salah negatif untuk setiap kelas posisi.
-    - *Classification Report*: Menyediakan nilai precision, recall, dan F1-score untuk setiap kelas, memberikan wawasan lebih dalam tentang kinerja model pada setiap posisi.
+Untuk mencapai tujuan di atas, proyek ini akan menerapkan solusi yang didasarkan pada machine learning dengan langkah-langkah yang dapat diukur:
+
+Pemakaian Dua Model Klasifikasi untuk Membandingkan Kinerja:
+- Mengembangkan dua model klasifikasi yang berlainan:
+- *K-Nearest Neighbors (KNN)*: Model ini akan mengklasifikasikan pemain berdasarkan kesamaan skill mereka dengan pemain yang sudah memiliki posisi yang diketahui. Kami akan melakukan tuning hyperparameter untuk menemukan nilai `n_neighbors` (misalnya, melalui teknik validasi silang) yang memberikan akurasi tertinggi.
+- *Random Forest*: Model ini akan memanfaatkan kumpulan decision tree untuk membuat prediksi yang lebih kuat dan tepat. Kami akan menyelidiki hyperparameter seperti n_estimators dan max_depth untuk memaksimalkan performa model.
+- Metrik Evaluasi: Kinerja kedua model akan dianalisis dan dibandingkan menggunakan metrik berikut:
+- *Akurasi (Accuracy Score)*: Mengukur persentase prediksi yang benar dari keseluruhan prediksi.
+- *Confusion Matrix*: Menyediakan gambaran terperinci tentang angka benar positif, benar negatif, salah positif, dan salah negatif untuk setiap kategori posisi.
+- *Classification Report*: Menyajikan nilai precision, recall, dan F1-score untuk masing-masing kategori, memberikan wawasan mendalam mengenai performa model di setiap posisi.
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini adalah "FIFA 21 Complete Player Dataset" yang dapat diunduh dari Kaggle melalui tautan berikut: https://www.kaggle.com/datasets/stefanoleone992/fifa-21-complete-player-dataset?select=players_21.csv. Dataset ini merupakan kumpulan data pemain sepak bola dari game FIFA 21, yang relevan untuk menganalisis karakteristik skill pemain.
+Dataset yang dipakai dalam proyek ini adalah "FIFA 21 Complete Player Dataset" yang bisa diambil dari Kaggle melalui tautan berikut: https://www. kaggle. com/datasets/stefanoleone992/fifa-21-complete-player-dataset? select=players_21. csv. Dataset ini terdiri dari data pemain sepak bola yang berasal dari permainan FIFA 21, yang penting untuk menganalisis ciri-ciri kemampuan pemain.
 
-Dataset `players_21.csv` memiliki 18.944 baris (pemain) dan 107 kolom (fitur/variabel), yang menjadikannya dataset yang cukup komprehensif untuk tugas klasifikasi. Namun, setelah inspeksi awal, diketahui bahwa dataset ini memiliki banyak nilai kosong (missing values) pada berbagai kolom, terutama pada fitur-fitur yang merepresentasikan skill spesifik. Variabel-variabel yang digunakan dalam proyek ini berfokus pada atribut yang merepresentasikan kemampuan pemain dalam berbagai skill sepak bola, seperti kecepatan (`pace`), kemampuan menembak (`shooting`), `passing`, `dribbling`, pertahanan (`defending`), kekuatan fisik (`physic`), serta skill khusus penjaga gawang (`gk_skill`).
+Dataset `players_21. csv` mencakup 18.944 baris (pemain) dan 107 kolom (fitur/variabel), sehingga menjadikannya dataset yang cukup lengkap untuk tugas klasifikasi. Namun, setelah pemeriksaan awal, ditemukan bahwa dataset ini memiliki sejumlah nilai yang hilang (missing values) di berbagai kolom, terutama pada fitur-fitur yang menggambarkan keterampilan tertentu. Variabel yang digunakan dalam proyek ini lebih berfokus pada atribut yang menunjukkan kemampuan pemain dalam berbagai aspek sepak bola, seperti kecepatan (`pace`), kemampuan menembak (`shooting`), `passing`, `dribbling`, pertahanan (`defending`), kekuatan fisik (`physic`), serta keterampilan khusus untuk penjaga gawang (`gk_skill`).
 
 ### Exploratory Data Analysis
 
-Berikut adalah beberapa tahapan eksplorasi data yang dilakukan untuk memahami karakteristik dataset:
+Berikut adalah beberapa langkah eksplorasi data yang dilakukan untuk memahami karakteristik dataset:
+
 - Pengecekan Tipe Data:
-Dilakukan pengecekan tipe data untuk setiap kolom menggunakan `player_df.info()`. Ini membantu mengidentifikasi variabel numerik dan kategorikal, serta potensi masalah tipe data yang tidak sesuai untuk analisis lebih lanjut.
+Tipe data untuk setiap kolom diperiksa menggunakan `player_df. info()`. Ini membantu dalam mengenali variabel yang bersifat numerik dan kategorikal, serta mengidentifikasi kemungkinan masalah terkait tipe data yang tidak sesuai untuk analisis selanjutnya.
 
 - Statistika Deskriptif:
-Statistika deskriptif seperti mean, median, min, max, dan standar deviasi dihitung (`player_df.describe()`) untuk mendapatkan gambaran umum tentang distribusi nilai pada variabel numerik. Hal ini memberikan pemahaman awal tentang rentang skill pemain dan penyebarannya.
+Statistik deskriptif seperti rata-rata, median, nilai minimum, maksimum, dan deviasi standar dihitung (`player_df. describe()`) untuk memberikan gambaran umum mengenai sebaran nilai pada variabel numerik. Ini memberikan wawasan awal tentang variasi keterampilan pemain dan distribusinya.
 
 - Pengecekan Missing Values:
-Dilakukan perhitungan jumlah nilai kosong (`player_df.isnull().sum()`). Seperti yang diinstruksikan, teridentifikasi bahwa terdapat banyak kolom dengan nilai yang hilang, yang perlu ditangani secara strategis pada tahap data preprocessing untuk memastikan kualitas data dan kinerja model.
+Dilakukan perhitungan jumlah nilai yang hilang (`player_df. isnull(). sum()`). Sesuai instruksi, terungkap bahwa ada beberapa kolom yang memiliki nilai yang hilang, dan isu ini perlu ditangani dengan strategi yang tepat selama tahap preprocessing data agar kualitas data dan performa model tetap terjaga.
 
 - Pengecekan Duplikasi Data:
-Dilakukan pengecekan terhadap baris yang terduplikasi (`player_df[player_df.duplicated()]`). Dari hasil eksplorasi awal, tidak ditemukan adanya baris duplikat, yang menandakan setiap entri mewakili pemain yang unik.
+Dilakukan pemeriksaan terhadap baris yang mungkin terduplikasi (`player_df[player_df. duplicated()]`). Dari hasil eksplorasi awal, tidak ditemukan baris yang terduplikasi, yang menunjukkan bahwa setiap entri adalah representasi pemain yang unik.
 
 - Pembagian Posisi Pemain:
-Variabel `player_position` dikelompokkan menjadi empat kategori utama (Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`) untuk menyederhanakan target klasifikasi dan memastikan jumlah sampel yang cukup di setiap kategori. Ini adalah langkah penting untuk membuat model klasifikasi yang seimbang dan relevan dengan tujuan bisnis.
+Variabel `player_position` dibagi menjadi empat kelompok utama yaitu Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`) untuk memudahkan dalam klasifikasi dan memastikan terdapat cukup sampel dalam masing-masing kategori. Ini merupakan langkah krusial untuk mengembangkan model klasifikasi yang seimbang dan sesuai dengan tujuan bisnis.
 
-- Visualisasi Distribusi Posisi:
-Visualisasi distribusi posisi menggunakan barchart dapat memberikan gambaran tentang proporsi pemain di setiap kategori posisi, membantu mengidentifikasi apakah ada ketidakseimbangan kelas yang perlu ditangani.
+- Pemetaan Distribusi Posisi:
+Pemetaan distribusi posisi melalui diagram batang bisa memberikan gambaran mengenai proporsi pemain di setiap kategori posisi, yang membantu mengidentifikasi apakah terdapat ketidakseimbangan dalam kelas yang perlu diselesaikan.
 
 ## Data Preparation
 
 1. Mengecek Ringkasan Informasi Dataset
-   - Mengecek informasi data menggunakan `player_df.info()`.
-   - Tujuan dari pengecekan ini adalah untuk membantu memahami struktur data, mengidentifikasi tipe data dari setiap kolom, dan merupakan langkah awal yang krusial dalam proses data cleaning dan penanganan missing values yang akan dilakukan kemudian.
-     
+- Memeriksa rincian informasi dataset dapat dilakukan dengan menggunakan `player_df. info()`.
+- Pengecekan ini bertujuan untuk memahami struktur dari data, mengenali tipe data di setiap kolom, serta menjadi langkah awal yang penting dalam proses pembersihan data dan penanganan nilai yang hilang yang akan dilakukan selanjutnya.
+
 2. Mengecek Duplikasi Data
-   - Mengecek duplikasi data dilakukan dengan kode  `player_df.duplicated().sum()`.
-   - Pada proyek ini, tidak ditemukan adanya data yang duplikat, menunjukkan setiap entri mewakili pemain yang unik.
-   - Mengecek duplikasi data bertujuan agar data tidak ganda, karena data ganda dapat mendominasi hasil perhitungan statistik yang menghasilkan kesimpulan yang bias. Proses pengecekan duplikasi diperlukan untuk mendapatkan representasi data yang akurat, efisien, dan relevan untuk pengambilan keputusan yang tepat.
-     
-3. Pemeriksaan dan Penanganan Nilai Kosong (_Missing Values_)
-   - Mengecek missing value dapat menggunakan `player_df.isnull().sum()`.
-   - Meskipun pada cek awal `player_df.isnull().sum()` akan menunjukkan banyak missing values di berbagai kolom, untuk fitur skill yang akan digunakan setelah proses seleksi fitur, missing values tersebut secara spesifik ditangani. Pada proyek ini, kolom skill spesifik penjaga gawang (`gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning`) yang memiliki nilai kosong diisi dengan rata-rata dari kolom `goalkeeping_`.
-   - Nilai kosong dapat mengganggu proses pelatihan model dan menghasilkan prediksi yang tidak akurat. Oleh karena itu, penanganan seperti imputasi (pengisian nilai) atau penghapusan baris/kolom sangat penting untuk memastikan kelengkapan dan kualitas data sebelum pelatihan model.
-     
+- Pengecekan untuk mendeteksi adanya data yang sama menggunakan kode `player_df. duplicated(). sum()`.
+- Dalam proyek ini, tidak ditemukan data yang terduplikasi, yang menunjukkan bahwa setiap entri merepresentasikan pemain yang unik.
+- Memeriksa duplikasi data dilakukan untuk memastikan tidak ada data yang berulang, karena adanya data ganda dapat mempengaruhi hasil analisis statistik, yang berpotensi menghasilkan kesimpulan yang menyesatkan. Proses ini sangat penting untuk mendapatkan representasi data yang tepat, efisien, dan sesuai untuk pengambilan keputusan yang baik.
+
+3. Pemeriksaan dan Penanganan Nilai Kosong (Missing Values)
+- Untuk memeriksa nilai yang hilang, dapat digunakan `player_df. isnull(). sum()`.
+- Meskipun pada pemeriksaan awal `player_df. isnull(). sum()` menunjukkan banyaknya nilai kosong di berbagai kolom, nilai hilang untuk fitur keterampilan yang akan digunakan setelah proses pemilihan fitur akan ditangani secara spesifik. Dalam proyek ini, kolom keterampilan khusus untuk penjaga gawang (`gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning`) yang memiliki nilai kosong akan diisi dengan rata-rata dari kolom `goalkeeping_`.
+- Nilai yang hilang dapat mengganggu proses pelatihan model dan mengakibatkan prediksi yang tidak akurat. Oleh sebab itu, penanganan seperti imputasi (pengisian nilai) atau penghapusan baris/kolom sangat diperlukan untuk memastikan bahwa data lengkap dan berkualitas sebelum pelatihan model dilakukan.
 4. Pengelompokan Posisi Pemain (_Position Grouping_)
    - Teknik: Feature Engineering (pengelompokan kategori).
    - Penjelasan Proses: Kolom `player_position` pada dataset awal memiliki banyak variasi posisi spesifik. Untuk menyederhanakan target klasifikasi, posisi-posisi ini dikelompokkan ke dalam empat kategori utama: Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`).
