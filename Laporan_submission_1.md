@@ -161,10 +161,6 @@ Tahap Evaluasi adalah fase krusial dalam proyek machine learning untuk menilai s
 Dalam proyek klasifikasi posisi pemain sepak bola ini, metrik evaluasi yang digunakan adalah:
      - Akurasi (Accuracy Score):
        - Penjelasan: Akurasi mengukur proporsi prediksi yang benar (baik True Positives maupun True Negatives) dari total seluruh prediksi. Ini adalah metrik paling sederhana dan intuitif yang menunjukkan seberapa sering model membuat prediksi yang tepat secara keseluruhan.
-       - Formula:
-       $$ 
-       \text{Akurasi} = \frac{\text{Jumlah Prediksi Benar}}{\text{Jumlah Total Prediksi}} 
-       $$
      - Confusion Matrix
        - Penjelasan: Confusion matrix adalah tabel yang menampilkan performa model klasifikasi pada sekumpulan data uji yang kebenarannya telah diketahui. Tabel ini memvisualisasikan jumlah True Positives (TP), True Negatives (TN), False Positives (FP), dan False Negatives (FN) untuk setiap kelas.
        - TP (True Positive): Kelas sebenarnya adalah Positif, diprediksi Positif.
