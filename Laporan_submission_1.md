@@ -157,8 +157,7 @@ Jika akurasi pelatihan dan pengujian KNN menunjukkan stabilitas yang lebih baik 
 Tahap Evaluasi adalah fase krusial dalam proyek machine learning untuk menilai seberapa efektif model yang telah dibangun dalam menyelesaikan permasalahan yang ada. Pada tahap ini, kinerja model diukur menggunakan metrik yang relevan, dan hasilnya dianalisis untuk memahami kekuatan serta kelemahan model.
 
 1.   Metrik Evaluasi yang Digunakan
-
-Dalam proyek klasifikasi posisi pemain sepak bola ini, metrik evaluasi yang digunakan adalah:
+     Dalam proyek klasifikasi posisi pemain sepak bola ini, metrik evaluasi yang digunakan adalah:
      - Akurasi (Accuracy Score):
        - Penjelasan: Akurasi mengukur proporsi prediksi yang benar (baik True Positives maupun True Negatives) dari total seluruh prediksi. Ini adalah metrik paling sederhana dan intuitif yang menunjukkan seberapa sering model membuat prediksi yang tepat secara keseluruhan.
      - Confusion Matrix
