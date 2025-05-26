@@ -1,12 +1,12 @@
 # LAPORAN MACHINE LEARNING - NABIL DEFIN JATMIKO
 
-## Domai proyek
+## Domain proyek
 
 Sepak bola adalah olahraga paling populer di dunia, dengan jutaan penggemar dan pemain di seluruh dunia. Dalam olahraga ini, penentuan posisi pemain yang tepat sangat krusial untuk kesuksesan tim. Setiap posisi memiliki peran dan membutuhkan karakteristik skill yang berbeda. Misalnya, seorang penyerang membutuhkan kemampuan menembak dan kecepatan yang tinggi, sementara seorang bek membutuhkan kemampuan bertahan dan fisik yang kuat. Penempatan pemain yang tidak sesuai dengan keahliannya dapat menghambat performa tim secara keseluruhan.
 
 Secara tradisional, penentuan posisi pemain seringkali didasarkan pada pengamatan subjektif oleh pelatih atau scout. Meskipun pengalaman dan intuisi memiliki perannya, metode ini rentan terhadap bias dan mungkin tidak selalu optimal dalam mengidentifikasi potensi penuh seorang pemain. Seiring dengan kemajuan teknologi dan ketersediaan data yang melimpah dalam dunia olahraga, pendekatan berbasis data dan Artificial Intelligence (AI) menawarkan solusi yang lebih objektif dan efisien.
 
-Proyek ini bertujuan untuk membangun model klasifikasi posisi pemain sepak bola berdasarkan atribut skill mereka. Dengan memanfaatkan dataset "players_21.csv" yang saya peroleh dari Kaggle (sesuai dengan kode Anda) dan berisi berbagai data skill pemain dari FIFA 21, proyek ini akan mengelompokkan pemain ke dalam empat kategori posisi utama: Penjaga Gawang (GK), Bertahan (DF), Gelandang (MF), dan Penyerang (FW). Atribut skill yang digunakan meliputi pace, shooting, passing, defending, physic, dribbling, dan gk_skill (skill penjaga gawang).
+Proyek ini bertujuan untuk membangun model klasifikasi posisi pemain sepak bola berdasarkan atribut skill mereka. Dengan memanfaatkan dataset "`players_21.csv`" yang saya peroleh dari Kaggle (sesuai dengan kode Anda) dan berisi berbagai data skill pemain dari FIFA 21, proyek ini akan mengelompokkan pemain ke dalam empat kategori posisi utama: Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`). Atribut skill yang digunakan meliputi `pace`, `shooting`, `passing`, `defending`, `physic`, `dribbling`, dan `gk_skill` (skill penjaga gawang).
 
 Dengan menerapkan algoritma machine learning seperti K-Nearest Neighbors (KNN) dan Random Forest (sesuai dengan kode Anda), proyek ini akan mengevaluasi performa masing-masing model dalam mengklasifikasikan posisi pemain. Evaluasi akan dilakukan berdasarkan metrik akurasi, confusion matrix, dan classification report (sesuai dengan kode Anda). Proyek ini diharapkan tidak hanya menghasilkan model prediktif yang akurat, tetapi juga dapat memberikan wawasan berharga bagi pelatih, scout, dan manajer tim dalam proses pengambilan keputusan terkait penempatan pemain, pengembangan bakat, dan strategi tim secara keseluruhan.
 
@@ -33,7 +33,7 @@ Proyek ini memiliki tujuan utama sebagai berikut:
 Untuk mencapai tujuan di atas, proyek ini akan mengimplementasikan solusi berbasis machine learning dengan langkah-langkah terukur:
 Pemanfaatan Dua Model Klasifikasi untuk Perbandingan Performa:
   - Mengembangkan dua model klasifikasi yang berbeda:
-    - *K-Nearest Neighbors (KNN)*: Model ini akan mengklasifikasikan pemain berdasarkan kedekatan skill mereka dengan pemain lain yang sudah diketahui posisinya. Kami akan melakukan hyperparameter tuning untuk mencari nilai 'n_neighbors' (misalnya, melalui validasi silang) yang menghasilkan akurasi terbaik.
+    - *K-Nearest Neighbors (KNN)*: Model ini akan mengklasifikasikan pemain berdasarkan kedekatan skill mereka dengan pemain lain yang sudah diketahui posisinya. Kami akan melakukan hyperparameter tuning untuk mencari nilai `n_neighbors` (misalnya, melalui validasi silang) yang menghasilkan akurasi terbaik.
     - *Random Forest*: Model ini akan menggunakan ensemble dari decision tree untuk membuat prediksi yang lebih robust dan akurat. Kami akan mengeksplorasi hyperparameter seperti n_estimators dan max_depth untuk mengoptimalkan kinerja model.
   - Metrik Evaluasi: Performa kedua model akan dievaluasi dan dibandingkan menggunakan metrik berikut:
     - *Akurasi (Accuracy Score)*: Mengukur proporsi prediksi yang benar dari total prediksi.
@@ -44,7 +44,7 @@ Pemanfaatan Dua Model Klasifikasi untuk Perbandingan Performa:
 
 Dataset yang digunakan dalam proyek ini adalah "FIFA 21 Complete Player Dataset" yang dapat diunduh dari Kaggle melalui tautan berikut: https://www.kaggle.com/datasets/stefanoleone992/fifa-21-complete-player-dataset?select=players_21.csv. Dataset ini merupakan kumpulan data pemain sepak bola dari game FIFA 21, yang relevan untuk menganalisis karakteristik skill pemain.
 
-Dataset players_21.csv memiliki 18.944 baris (pemain) dan 107 kolom (fitur/variabel), yang menjadikannya dataset yang cukup komprehensif untuk tugas klasifikasi. Namun, setelah inspeksi awal, diketahui bahwa dataset ini memiliki banyak nilai kosong (missing values) pada berbagai kolom, terutama pada fitur-fitur yang merepresentasikan skill spesifik. Variabel-variabel yang digunakan dalam proyek ini berfokus pada atribut yang merepresentasikan kemampuan pemain dalam berbagai skill sepak bola, seperti kecepatan (pace), kemampuan menembak (shooting), passing, dribbling, pertahanan (defending), kekuatan fisik (physic), serta skill khusus penjaga gawang (gk_skill).
+Dataset `players_21.csv` memiliki 18.944 baris (pemain) dan 107 kolom (fitur/variabel), yang menjadikannya dataset yang cukup komprehensif untuk tugas klasifikasi. Namun, setelah inspeksi awal, diketahui bahwa dataset ini memiliki banyak nilai kosong (missing values) pada berbagai kolom, terutama pada fitur-fitur yang merepresentasikan skill spesifik. Variabel-variabel yang digunakan dalam proyek ini berfokus pada atribut yang merepresentasikan kemampuan pemain dalam berbagai skill sepak bola, seperti kecepatan (`pace`), kemampuan menembak (`shooting`), `passing`, `dribbling`, pertahanan (`defending`), kekuatan fisik (`physic`), serta skill khusus penjaga gawang (`gk_skill`).
 
 ### Exploratory Data Analysis
 
@@ -53,19 +53,19 @@ Berikut adalah beberapa tahapan eksplorasi data yang dilakukan untuk memahami ka
 Dilakukan pengecekan tipe data untuk setiap kolom menggunakan `player_df.info()`. Ini membantu mengidentifikasi variabel numerik dan kategorikal, serta potensi masalah tipe data yang tidak sesuai untuk analisis lebih lanjut.
 
 - Statistika Deskriptif:
-Statistika deskriptif seperti mean, median, min, max, dan standar deviasi dihitung (player_df.describe()) untuk mendapatkan gambaran umum tentang distribusi nilai pada variabel numerik. Hal ini memberikan pemahaman awal tentang rentang skill pemain dan penyebarannya.
+Statistika deskriptif seperti mean, median, min, max, dan standar deviasi dihitung (`player_df.describe()`) untuk mendapatkan gambaran umum tentang distribusi nilai pada variabel numerik. Hal ini memberikan pemahaman awal tentang rentang skill pemain dan penyebarannya.
 
 - Pengecekan Missing Values:
-Dilakukan perhitungan jumlah nilai kosong (player_df.isnull().sum()). Seperti yang diinstruksikan, teridentifikasi bahwa terdapat banyak kolom dengan nilai yang hilang, yang perlu ditangani secara strategis pada tahap data preprocessing untuk memastikan kualitas data dan kinerja model.
+Dilakukan perhitungan jumlah nilai kosong (`player_df.isnull().sum()`). Seperti yang diinstruksikan, teridentifikasi bahwa terdapat banyak kolom dengan nilai yang hilang, yang perlu ditangani secara strategis pada tahap data preprocessing untuk memastikan kualitas data dan kinerja model.
 
 - Pengecekan Duplikasi Data:
 Dilakukan pengecekan terhadap baris yang terduplikasi (`player_df[player_df.duplicated()]`). Dari hasil eksplorasi awal, tidak ditemukan adanya baris duplikat, yang menandakan setiap entri mewakili pemain yang unik.
 
 - Pembagian Posisi Pemain:
-Variabel 'Posisi' dikelompokkan menjadi empat kategori utama (Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`) untuk menyederhanakan target klasifikasi dan memastikan jumlah sampel yang cukup di setiap kategori. Ini adalah langkah penting untuk membuat model klasifikasi yang seimbang dan relevan dengan tujuan bisnis.
+Variabel `player_position` dikelompokkan menjadi empat kategori utama (Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`) untuk menyederhanakan target klasifikasi dan memastikan jumlah sampel yang cukup di setiap kategori. Ini adalah langkah penting untuk membuat model klasifikasi yang seimbang dan relevan dengan tujuan bisnis.
 
 - Visualisasi Distribusi Posisi:
-Visualisasi distribusi posisi (misalnya, menggunakan count plot atau bar chart) dapat memberikan gambaran tentang proporsi pemain di setiap kategori posisi, membantu mengidentifikasi apakah ada ketidakseimbangan kelas yang perlu ditangani.
+Visualisasi distribusi posisi menggunakan barchart dapat memberikan gambaran tentang proporsi pemain di setiap kategori posisi, membantu mengidentifikasi apakah ada ketidakseimbangan kelas yang perlu ditangani.
 
 ## Data Preparation
 
@@ -161,10 +161,29 @@ Tahap Evaluasi adalah fase krusial dalam proyek machine learning untuk menilai s
 Dalam proyek klasifikasi posisi pemain sepak bola ini, metrik evaluasi yang digunakan adalah:
      - Akurasi (Accuracy Score):
        - Penjelasan: Akurasi mengukur proporsi prediksi yang benar (baik True Positives maupun True Negatives) dari total seluruh prediksi. Ini adalah metrik paling sederhana dan intuitif yang menunjukkan seberapa sering model membuat prediksi yang tepat secara keseluruhan.
-       - Formula: $$ \text{Akurasi} = \frac{\text{Jumlah Prediksi Benar}}{\text{Jumlah Total Prediksi}} $$
-       Penjelasan: Confusion matrix adalah tabel yang menampilkan performa model klasifikasi pada sekumpulan data uji yang kebenarannya telah diketahui. Tabel ini memvisualisasikan jumlah True Positives (TP), True Negatives (TN), False Positives (FP), dan False Negatives (FN) untuk setiap kelas.
-       TP (True Positive): Kelas sebenarnya adalah Positif, diprediksi Positif.
-       TN (True Negative): Kelas sebenarnya adalah Negatif, diprediksi Negatif.
-       FP (False Positive): Kelas sebenarnya adalah Negatif, diprediksi Positif (kesalahan Tipe I).
-       FN (False Negative): Kelas sebenarnya adalah Positif, diprediksi Negatif (kesalahan Tipe II).
-       
+       - Formula:
+       $$ 
+       \text{Akurasi} = \frac{\text{Jumlah Prediksi Benar}}{\text{Jumlah Total Prediksi}} 
+       $$
+     - Confusion Matrix
+       - Penjelasan: Confusion matrix adalah tabel yang menampilkan performa model klasifikasi pada sekumpulan data uji yang kebenarannya telah diketahui. Tabel ini memvisualisasikan jumlah True Positives (TP), True Negatives (TN), False Positives (FP), dan False Negatives (FN) untuk setiap kelas.
+       - TP (True Positive): Kelas sebenarnya adalah Positif, diprediksi Positif.
+       - TN (True Negative): Kelas sebenarnya adalah Negatif, diprediksi Negatif.
+       - FP (False Positive): Kelas sebenarnya adalah Negatif, diprediksi Positif (kesalahan Tipe I).
+       - FN (False Negative): Kelas sebenarnya adalah Positif, diprediksi Negatif (kesalahan Tipe II).
+Dari kedua model klasifikasi, didapatkan nilai akurasi adalah sebagai berikut:
+
+|Model|train|test|
+| --- | --- | --- |
+| KNN | 0.8642 | 0.8519 |
+| Random Forest | 0.9999 | 0.8556 |
+
+Berdasarkan hasil akurasi pada data train dan test, diperoleh bahwa model Random Fores memiliki akurasi testing terbaik dibandingkan model KNN. Akan tetapi Random Forest memiliki gap yang sangat jauh antara training dan juga testing, maka dari itu model terbaik yaitu adalah KNN. KNN memiliki akurasi testing yang tinggi dan gap antara training dan testing tidak jauh atau bisa dibilang tidak overfitting. Artinya, model KNN mampu memprediksi target dengan kesalahan yang sangat kecil terhadap apa yang ia pelajari dari datanya.
+
+## Daftar Referensi
+Tentu, berikut adalah daftar referensi yang Anda minta:
+
+Daftar Referensi
+[1] Aliyarov, Kh., Rikhsivoev, M., Arabboev, M., Begmatov, Sh., Saydiakbarov, S., Nosirov, Kh., & Khamidjonov, Z. (2023). ARTIFICIAL INTELLIGENCE IN PERFORMANCE ANALYSIS OF FOOTBALL MATCHES AND PLAYERS. Uzjournal, 3(19). [[Link ke artikel]](https://www.uzjurnal.uz/2/2023/3/index?issue=19)
+
+[2] Apostolou, K., & Tjortjis, C. (2019). Machine learning for position detection in football. International Conference on Artificial Intelligence and Sports, 103991. [[Link ke artikel]](https://www.researchgate.net/publication/335076326_Machine_Learning_for_Position_Detection_in_Football)
