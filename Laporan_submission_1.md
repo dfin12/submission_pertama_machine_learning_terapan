@@ -47,86 +47,112 @@ Dataset yang dipakai dalam proyek ini adalah [_FIFA 21 Complete Player Dataset_]
 
 Dataset `players_21.csv` mencakup 18.944 baris (pemain) dan 106 kolom (fitur/variabel), sehingga menjadikannya dataset yang cukup lengkap untuk tugas klasifikasi. Namun, setelah pemeriksaan awal, ditemukan bahwa dataset ini memiliki sejumlah nilai yang hilang (missing values) di berbagai kolom, terutama pada fitur-fitur yang menggambarkan keterampilan tertentu. Variabel yang digunakan dalam proyek ini lebih berfokus pada atribut yang menunjukkan kemampuan pemain dalam berbagai aspek sepak bola, seperti kecepatan (`pace`), kemampuan menembak (`shooting`), `passing`, `dribbling`, pertahanan (`defending`), kekuatan fisik (`physic`), serta keterampilan khusus untuk penjaga gawang (`gk_skill` (akan ditambahkan)) keterampilan ini didapat dari rata-rata `gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning`. Berikut merupakan penjelasan fitur untuk seluruh fitur yang ada pada dataset:
 
-`sofifa_id` : ID pemain dalam FIFA 21
-`player_url` : URL profil pemain di SoFIFA
-`short_name` : Nama pendek pemain
-`long_name` : Nama lengkap pemain
-`age` : Usia pemain (tahun)
-`dob` : Tanggal lahir pemain
-`height_cm` : Tinggi pemain dalam sentimeter
-`weight_kg` : Berat pemain dalam kilogram
-`nationality` : Kebangsaan pemain
-`club_name` : Nama klub pemain
-`league_name` : Nama liga klub pemain
-`league_rank` : Peringkat liga klub pemain
-`overall` : Peringkat keseluruhan pemain (Overall Rating - OVR)
-`potential` : Potensi peringkat keseluruhan pemain (Potential Rating - POT)
-`value_eur` : Nilai pasar pemain dalam Euro
-`wage_eur` : Gaji pemain per minggu dalam Euro
-`player_positions` : Posisi utama pemain (misalnya, ST, RW, CM)
-`preferred_foot` : Kaki pilihan pemain (Kanan/Kiri)
-`international_reputation` : Reputasi internasional pemain
-`weak_foot` : Tingkat penguasaan kaki yang tidak dominan (1-5 bintang)
-`skill_moves` : Tingkat kemampuan gerakan skill (1-5 bintang)
-`work_rate` : Tingkat kerja pemain dalam menyerang/bertahan (misalnya, High/Medium)
-`body_type` : Tipe tubuh pemain (misalnya, Lean, Normal, Stocky)
-`real_face` : Indikator apakah pemain memiliki wajah asli dalam game (Yes/No)
-`release_clause_eur` : Klausul pelepasan pemain dalam Euro
-`player_tags` : Tag atau karakteristik khusus pemain (misalnya, "Pemain Bintang", "Wonderkid")
-`team_position` : Posisi pemain dalam formasi tim
-`team_jersey_number` : Nomor punggung jersey pemain di klub
-`loaned_from` : Nama klub asal jika pemain sedang dipinjamkan
-`joined` : Tanggal pemain bergabung dengan klub saat ini
-`contract_valid_until` : Tahun kontrak pemain berakhir
-`nation_position` : Posisi pemain di tim nasional
-`nation_jersey_number` : Nomor punggung jersey pemain di tim nasional
-`pace` : Atribut kecepatan pemain secara keseluruhan (PAC)
-`shooting` : Atribut kemampuan menembak pemain secara keseluruhan (SHO)
-`passing` : Atribut kemampuan mengumpan pemain secara keseluruhan (PAS)
-`dribbling` : Atribut kemampuan menggiring bola pemain secara keseluruhan (DRI)
-`defending` : Atribut kemampuan bertahan pemain secara keseluruhan (DEF)
-`physic` : Atribut fisik pemain secara keseluruhan (PHY)
-`gk_diving` : Atribut kiper: kemampuan menyelam (Diving)
-`gk_handling` : Atribut kiper: kemampuan menangkap bola (Handling)
-`gk_kicking` : Atribut kiper: kemampuan menendang bola (Kicking)
-`gk_reflexes` : Atribut kiper: kemampuan refleks (Reflexes)
-`gk_speed` : Atribut kiper: kecepatan (Speed)
-`gk_positioning` : Atribut kiper: kemampuan posisi (Positioning)
-`player_traits` : Sifat atau karakteristik tambahan pemain
-`attacking_crossing` : Atribut menyerang: Crossing (akurasi umpan silang)
-`attacking_finishing` : Atribut menyerang: Finishing (akurasi tembakan ke gawang)
-`attacking_heading_accuracy` : Atribut menyerang: Heading Accuracy (akurasi sundulan)
-`attacking_short_passing` : Atribut menyerang: Short Passing (akurasi umpan pendek)
-`attacking_volleys` : Atribut menyerang: Volleys (akurasi tendangan voli)
-`skill_dribbling` : Atribut skill: Dribbling (kemampuan menggiring bola)
-`skill_curve` : Atribut skill: Curve (kemampuan melengkungkan bola)
-`skill_fk_accuracy` : Atribut skill: FK Accuracy (akurasi tendangan bebas)
-`skill_long_passing` : Atribut skill: Long Passing (akurasi umpan jauh)
-`skill_ball_control` : Atribut skill: Ball Control (kontrol bola)
-`movement_acceleration` : Atribut gerakan: Acceleration (akselerasi)
-`movement_sprint_speed` : Atribut gerakan: Sprint Speed (kecepatan lari)
-`movement_agility` : Atribut gerakan: Agility (kelincahan)
-`movement_reactions` : Atribut gerakan: Reactions (reaksi)
-`movement_balance` : Atribut gerakan: Balance (keseimbangan)
-`power_shot_power` : Atribut kekuatan: Shot Power (kekuatan tembakan)
-`power_jumping` : Atribut kekuatan: Jumping (kemampuan melompat)
-`power_stamina` : Atribut kekuatan: Stamina (daya tahan)
-`power_strength` : Atribut kekuatan: Strength (kekuatan fisik)
-`power_long_shots` : Atribut kekuatan: Long Shots (tembakan jarak jauh)
-`mentality_aggression` : Atribut mental: Aggression (agresi)
-`mentality_interceptions` : Atribut mental: Interceptions (kemampuan memotong umpan)
-`mentality_positioning` : Atribut mental: Positioning (penempatan posisi)
-`mentality_vision` : Atribut mental: Vision (visi bermain)
-`mentality_penalties` : Atribut mental: Penalties (kemampuan tendangan penalti)
-`mentality_composure` : Atribut mental: Composure (ketenangan)
-`defending_marking` : Atribut bertahan: Marking (kemampuan menjaga lawan)
-`defending_standing_tackle` : Atribut bertahan: Standing Tackle (tekel berdiri)
-`defending_sliding_tackle` : Atribut bertahan: Sliding Tackle (tekel meluncur)
-`goalkeeping_diving` : Atribut kiper: Diving (menyelam)
-`goalkeeping_handling` : Atribut kiper: Handling (menangkap bola)
-`goalkeeping_kicking` : Atribut kiper: Kicking (menendang bola)
-`goalkeeping_positioning` : Atribut kiper: Positioning (penempatan posisi)
-`goalkeeping_reflexes` : Atribut
+- `sofifa_id` : ID pemain dalam FIFA 21
+- `player_url` : URL profil pemain di SoFIFA
+- `short_name` : Nama pendek pemain
+- `long_name` : Nama lengkap pemain
+- `age` : Usia pemain (tahun)
+- `dob` : Tanggal lahir pemain
+- `height_cm` : Tinggi pemain dalam sentimeter
+- `weight_kg` : Berat pemain dalam kilogram
+- `nationality` : Kebangsaan pemain
+- `club_name` : Nama klub pemain
+- `league_name` : Nama liga klub pemain
+- `league_rank` : Peringkat liga klub pemain
+- `overall` : Peringkat keseluruhan pemain (Overall Rating - OVR)
+- `potential` : Potensi peringkat keseluruhan pemain (Potential Rating - POT)
+- `value_eur` : Nilai pasar pemain dalam Euro
+- `wage_eur` : Gaji pemain per minggu dalam Euro
+- `player_positions` : Posisi utama pemain (misalnya, ST, RW, CM)
+- `preferred_foot` : Kaki pilihan pemain (Kanan/Kiri)
+- `international_reputation` : Reputasi internasional pemain
+- `weak_foot` : Tingkat penguasaan kaki yang tidak dominan (1-5 bintang)
+- `skill_moves` : Tingkat kemampuan gerakan skill (1-5 bintang)
+- `work_rate` : Tingkat kerja pemain dalam menyerang/bertahan (misalnya, High/Medium)
+- `body_type` : Tipe tubuh pemain (misalnya, Lean, Normal, Stocky)
+- `real_face` : Indikator apakah pemain memiliki wajah asli dalam game (Yes/No)
+- `release_clause_eur` : Klausul pelepasan pemain dalam Euro
+- `player_tags` : Tag atau karakteristik khusus pemain (misalnya, "Pemain Bintang", "Wonderkid")
+- `team_position` : Posisi pemain dalam formasi tim
+- `team_jersey_number` : Nomor punggung jersey pemain di klub
+- `loaned_from` : Nama klub asal jika pemain sedang dipinjamkan
+- `joined` : Tanggal pemain bergabung dengan klub saat ini
+- `contract_valid_until` : Tahun kontrak pemain berakhir
+- `nation_position` : Posisi pemain di tim nasional
+- `nation_jersey_number` : Nomor punggung jersey pemain di tim nasional
+- `pace` : Atribut kecepatan pemain secara keseluruhan (PAC)
+- `shooting` : Atribut kemampuan menembak pemain secara keseluruhan (SHO)
+- `passing` : Atribut kemampuan mengumpan pemain secara keseluruhan (PAS)
+- `dribbling` : Atribut kemampuan menggiring bola pemain secara keseluruhan (DRI)
+- `defending` : Atribut kemampuan bertahan pemain secara keseluruhan (DEF)
+- `physic` : Atribut fisik pemain secara keseluruhan (PHY)
+- `gk_diving` : Atribut kiper: kemampuan menyelam (Diving)
+- `gk_handling` : Atribut kiper: kemampuan menangkap bola (Handling)
+- `gk_kicking` : Atribut kiper: kemampuan menendang bola (Kicking)
+- `gk_reflexes` : Atribut kiper: kemampuan refleks (Reflexes)
+- `gk_speed` : Atribut kiper: kecepatan (Speed)
+- `gk_positioning` : Atribut kiper: kemampuan posisi (Positioning)
+- `player_traits` : Sifat atau karakteristik tambahan pemain
+- `attacking_crossing` : Atribut menyerang: Crossing (akurasi umpan silang)
+- `attacking_finishing` : Atribut menyerang: Finishing (akurasi tembakan ke gawang)
+- `attacking_heading_accuracy` : Atribut menyerang: Heading Accuracy (akurasi sundulan)
+- `attacking_short_passing` : Atribut menyerang: Short Passing (akurasi umpan pendek)
+- `attacking_volleys` : Atribut menyerang: Volleys (akurasi tendangan voli)
+- `skill_dribbling` : Atribut skill: Dribbling (kemampuan menggiring bola)
+- `skill_curve` : Atribut skill: Curve (kemampuan melengkungkan bola)
+- `skill_fk_accuracy` : Atribut skill: FK Accuracy (akurasi tendangan bebas)
+- `skill_long_passing` : Atribut skill: Long Passing (akurasi umpan jauh)
+- `skill_ball_control` : Atribut skill: Ball Control (kontrol bola)
+- `movement_acceleration` : Atribut gerakan: Acceleration (akselerasi)
+- `movement_sprint_speed` : Atribut gerakan: Sprint Speed (kecepatan lari)
+- `movement_agility` : Atribut gerakan: Agility (kelincahan)
+- `movement_reactions` : Atribut gerakan: Reactions (reaksi)
+- `movement_balance` : Atribut gerakan: Balance (keseimbangan)
+- `power_shot_power` : Atribut kekuatan: Shot Power (kekuatan tembakan)
+- `power_jumping` : Atribut kekuatan: Jumping (kemampuan melompat)
+- `power_stamina` : Atribut kekuatan: Stamina (daya tahan)
+- `power_strength` : Atribut kekuatan: Strength (kekuatan fisik)
+- `power_long_shots` : Atribut kekuatan: Long Shots (tembakan jarak jauh)
+- `mentality_aggression` : Atribut mental: Aggression (agresi)
+- `mentality_interceptions` : Atribut mental: Interceptions (kemampuan memotong umpan)
+- `mentality_positioning` : Atribut mental: Positioning (penempatan posisi)
+- `mentality_vision` : Atribut mental: Vision (visi bermain)
+- `mentality_penalties` : Atribut mental: Penalties (kemampuan tendangan penalti)
+- `mentality_composure` : Atribut mental: Composure (ketenangan)
+- `defending_marking` : Atribut bertahan: Marking (kemampuan menjaga lawan)
+- `defending_standing_tackle` : Atribut bertahan: Standing Tackle (tekel berdiri)
+- `defending_sliding_tackle` : Atribut bertahan: Sliding Tackle (tekel meluncur)
+- `goalkeeping_diving` : Atribut kiper: Diving (menyelam)
+- `goalkeeping_handling` : Atribut kiper: Handling (menangkap bola)
+- `goalkeeping_kicking` : Atribut kiper: Kicking (menendang bola)
+- `goalkeeping_positioning` : Atribut kiper: Positioning (penempatan posisi)
+- `goalkeeping_reflexes` : Atribut iper: Reflexes (refleks)
+- ` ls ` : Rating pemain di posisi Left Striker
+` st ` : Rating pemain di posisi Striker
+` rs ` : Rating pemain di posisi Right Striker
+` lw ` : Rating pemain di posisi Left Winger
+` lf ` : Rating pemain di posisi Left Forward
+` cf ` : Rating pemain di posisi Center Forward
+` rf ` : Rating pemain di posisi Right Forward
+` rw ` : Rating pemain di posisi Right Winger
+` lam ` : Rating pemain di posisi Left Attacking Midfielder
+` cam ` : Rating pemain di posisi Central Attacking Midfielder
+` ram ` : Rating pemain di posisi Right Attacking Midfielder
+` lm ` : Rating pemain di posisi Left Midfielder
+` lcm ` : Rating pemain di posisi Left Center Midfielder
+` cm ` : Rating pemain di posisi Center Midfielder
+` rcm ` : Rating pemain di posisi Right Center Midfielder
+` rm ` : Rating pemain di posisi Right Midfielder
+` lwb ` : Rating pemain di posisi Left Wing Back
+` ldm ` : Rating pemain di posisi Left Defensive Midfielder
+` cdm ` : Rating pemain di posisi Central Defensive Midfielder
+` rdm ` : Rating pemain di posisi Right Defensive Midfielder
+` rwb ` : Rating pemain di posisi Right Wing Back
+` lb ` : Rating pemain di posisi Left Back
+` lcb ` : Rating pemain di posisi Left Center Back
+` cb ` : Rating pemain di posisi Center Back
+` rcb ` : Rating pemain di posisi Right Center Back
+` rb ` : Rating pemain di posisi Right Back
 
 ### Exploratory Data Analysis
 
@@ -268,7 +294,7 @@ Dataset yang telah bersih dan disiapkan kemudian dibagi menjadi dua bagian: data
 
 Tahap Modeling merupakan inti dari proyek machine learning ini, di mana model-model klasifikasi dibangun dan dilatih untuk menyelesaikan permasalahan penentuan posisi pemain sepak bola. Dalam proyek ini, dua algoritma machine learning yang berbeda, yaitu K-Nearest Neighbors (KNN) dan Random Forest, dipilih untuk dibandingkan performanya.
 
-1. Pembuatan Model K-Nearest Neighbors (KNN)
+### Pembuatan Model K-Nearest Neighbors (KNN)
 Algoritma K-Nearest Neighbors (KNN) adalah metode klasifikasi non-parametrik yang bekerja dengan mengklasifikasikan titik data baru berdasarkan mayoritas kelas dari 'k' tetangga terdekatnya dalam ruang fitur. Dalam konteks klasifikasi pemain, misalnya untuk mengklasifikasikan pemain berdasarkan kesamaan skill dengan pemain yang sudah memiliki posisi yang diketahui, KNN akan mengukur kesamaan antar pemain. Kesamaan ini diukur menggunakan metrik jarak, seperti jarak Euclidean, yang menghitung jarak 'garis lurus' antara dua titik dalam ruang multidimensional (dalam hal ini, skill-skill pemain menjadi dimensi).
 
 Secara spesifik, cara kerja KNN adalah sebagai berikut: ketika sebuah titik data baru (pemain yang belum diketahui posisinya) ingin diklasifikasikan, algoritma akan menghitung jarak antara titik data baru tersebut dengan semua titik data yang sudah ada (pemain dengan posisi yang diketahui). Setelah itu, algoritma akan mengidentifikasi `k` tetangga terdekat yang memiliki jarak terkecil. Kemudian, titik data baru tersebut akan diberi label kelas berdasarkan voting mayoritas dari `k` tetangga terdekatnya. Misalnya, jika dari 19 tetangga terdekat, 15 di antaranya adalah penyerang dan 4 adalah gelandang, maka pemain baru tersebut akan diklasifikasikan sebagai penyerang.
@@ -293,7 +319,7 @@ print(f"Akurasi KNN pada data training: {accuracy_train_knn:.4f}")
 ```
 Dalam kode di atas, akan dilihat akurasi dari training model KNN. Ini dilakukan dengan memprediksi label untuk data training (`X_train`) menggunakan model KNN yang sudah dilatih, di mana hasil prediksinya disimpan dalam `y_pred_train_knn`. Selanjutnya, akurasi training dihitung dengan membandingkan prediksi tersebut (`y_pred_train_knn`) dengan label sebenarnya dari data training (`y_train`) menggunakan `accuracy_score`. Hasil perhitungan menunjukkan bahwa Akurasi KNN pada data training adalah 0.8620, yang berarti model berhasil mengklasifikasikan 86.20% dari sampel data training dengan benar.
 
-2. Pembuatan Model Random Forest
+### Pembuatan Model Random Forest
 Algoritma Random Forest adalah metode klasifikasi dan regresi ensemble yang bekerja dengan membangun banyak pohon keputusan selama pelatihan, dan kemudian mengeluarkan kelas yang merupakan modus (untuk klasifikasi) atau rata-rata prediksi (untuk regresi) dari pohon-pohon individual. Dalam konteks klasifikasi pemain, misalnya untuk memprediksi posisi pemain berdasarkan skill mereka, Random Forest akan mengatasi beberapa keterbatasan dari satu pohon keputusan.
 
 Melihat pada kode `rf_model = RandomForestClassifier(random_state=42)` dan `rf_model.fit(X_train, y_train)`, langkah pertama adalah menginisialisasi model Random Forest menggunakan `RandomForestClassifier()`. Parameter `random_state=42` di sini berfungsi untuk memastikan hasil yang konsisten dan dapat direproduksi setiap kali kode dijalankan, karena ini mengunci seed untuk pembangkitan angka acak internal. Setelah inisialisasi, model dilatih menggunakan metode `fit().` Pada tahap ini, `X_train` (data fitur pelatihan) dan `y_train` (label atau target pelatihan) digunakan untuk membangun dan melatih setiap pohon keputusan dalam hutan. Setiap pohon dilatih pada subset data pelatihan yang berbeda (melalui bootstrapping) dan hanya menggunakan subset fitur yang acak saat mencari pemisahan terbaik.
