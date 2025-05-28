@@ -43,7 +43,7 @@ Pemakaian Dua Model Klasifikasi untuk Membandingkan Kinerja:
 
 ## Data Understanding
 
-Dataset yang dipakai dalam proyek ini adalah [FIFA 21 Complete Player Dataset] (https://www.kaggle.com/datasets/stefanoleone992/fifa-21-complete-player-dataset?select=players_21.csv). Dataset ini terdiri dari data pemain sepak bola yang berasal dari permainan FIFA 21, yang penting untuk menganalisis ciri-ciri kemampuan pemain.
+Dataset yang dipakai dalam proyek ini adalah [_FIFA 21 Complete Player Dataset_](https://www.kaggle.com/datasets/stefanoleone992/fifa-21-complete-player-dataset?select=players_21.csv). Dataset ini terdiri dari data pemain sepak bola yang berasal dari permainan FIFA 21, yang penting untuk menganalisis ciri-ciri kemampuan pemain.
 
 Dataset `players_21.csv` mencakup 18.944 baris (pemain) dan 106 kolom (fitur/variabel), sehingga menjadikannya dataset yang cukup lengkap untuk tugas klasifikasi. Namun, setelah pemeriksaan awal, ditemukan bahwa dataset ini memiliki sejumlah nilai yang hilang (missing values) di berbagai kolom, terutama pada fitur-fitur yang menggambarkan keterampilan tertentu. Variabel yang digunakan dalam proyek ini lebih berfokus pada atribut yang menunjukkan kemampuan pemain dalam berbagai aspek sepak bola, seperti kecepatan (`pace`), kemampuan menembak (`shooting`), `passing`, `dribbling`, pertahanan (`defending`), kekuatan fisik (`physic`), serta keterampilan khusus untuk penjaga gawang (`gk_skill` (akan ditambahkan)) keterampilan ini didapat dari rata-rata `gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning`. Berikut merupakan penjelasan fitur untuk seluruh fitur yang ada pada dataset:
 
