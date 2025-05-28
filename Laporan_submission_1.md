@@ -43,9 +43,90 @@ Pemakaian Dua Model Klasifikasi untuk Membandingkan Kinerja:
 
 ## Data Understanding
 
-Dataset yang dipakai dalam proyek ini adalah "FIFA 21 Complete Player Dataset" yang bisa diambil dari Kaggle melalui tautan berikut: https://www. kaggle. com/datasets/stefanoleone992/fifa-21-complete-player-dataset? select=players_21. csv. Dataset ini terdiri dari data pemain sepak bola yang berasal dari permainan FIFA 21, yang penting untuk menganalisis ciri-ciri kemampuan pemain.
+Dataset yang dipakai dalam proyek ini adalah [[FIFA 21 Complete Player Dataset]](https://www. kaggle. com/datasets/stefanoleone992/fifa-21-complete-player-dataset? select=players_21.csv). Dataset ini terdiri dari data pemain sepak bola yang berasal dari permainan FIFA 21, yang penting untuk menganalisis ciri-ciri kemampuan pemain.
 
-Dataset `players_21. csv` mencakup 18.944 baris (pemain) dan 107 kolom (fitur/variabel), sehingga menjadikannya dataset yang cukup lengkap untuk tugas klasifikasi. Namun, setelah pemeriksaan awal, ditemukan bahwa dataset ini memiliki sejumlah nilai yang hilang (missing values) di berbagai kolom, terutama pada fitur-fitur yang menggambarkan keterampilan tertentu. Variabel yang digunakan dalam proyek ini lebih berfokus pada atribut yang menunjukkan kemampuan pemain dalam berbagai aspek sepak bola, seperti kecepatan (`pace`), kemampuan menembak (`shooting`), `passing`, `dribbling`, pertahanan (`defending`), kekuatan fisik (`physic`), serta keterampilan khusus untuk penjaga gawang (`gk_skill`).
+Dataset `players_21.csv` mencakup 18.944 baris (pemain) dan 106 kolom (fitur/variabel), sehingga menjadikannya dataset yang cukup lengkap untuk tugas klasifikasi. Namun, setelah pemeriksaan awal, ditemukan bahwa dataset ini memiliki sejumlah nilai yang hilang (missing values) di berbagai kolom, terutama pada fitur-fitur yang menggambarkan keterampilan tertentu. Variabel yang digunakan dalam proyek ini lebih berfokus pada atribut yang menunjukkan kemampuan pemain dalam berbagai aspek sepak bola, seperti kecepatan (`pace`), kemampuan menembak (`shooting`), `passing`, `dribbling`, pertahanan (`defending`), kekuatan fisik (`physic`), serta keterampilan khusus untuk penjaga gawang (`gk_skill` (akan ditambahkan)) keterampilan ini didapat dari rata-rata `gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning`. Berikut merupakan penjelasan fitur untuk seluruh fitur yang ada pada dataset:
+
+`sofifa_id` : ID pemain dalam FIFA 21
+`player_url` : URL profil pemain di SoFIFA
+`short_name` : Nama pendek pemain
+`long_name` : Nama lengkap pemain
+`age` : Usia pemain (tahun)
+`dob` : Tanggal lahir pemain
+`height_cm` : Tinggi pemain dalam sentimeter
+`weight_kg` : Berat pemain dalam kilogram
+`nationality` : Kebangsaan pemain
+`club_name` : Nama klub pemain
+`league_name` : Nama liga klub pemain
+`league_rank` : Peringkat liga klub pemain
+`overall` : Peringkat keseluruhan pemain (Overall Rating - OVR)
+`potential` : Potensi peringkat keseluruhan pemain (Potential Rating - POT)
+`value_eur` : Nilai pasar pemain dalam Euro
+`wage_eur` : Gaji pemain per minggu dalam Euro
+`player_positions` : Posisi utama pemain (misalnya, ST, RW, CM)
+`preferred_foot` : Kaki pilihan pemain (Kanan/Kiri)
+`international_reputation` : Reputasi internasional pemain
+`weak_foot` : Tingkat penguasaan kaki yang tidak dominan (1-5 bintang)
+`skill_moves` : Tingkat kemampuan gerakan skill (1-5 bintang)
+`work_rate` : Tingkat kerja pemain dalam menyerang/bertahan (misalnya, High/Medium)
+`body_type` : Tipe tubuh pemain (misalnya, Lean, Normal, Stocky)
+`real_face` : Indikator apakah pemain memiliki wajah asli dalam game (Yes/No)
+`release_clause_eur` : Klausul pelepasan pemain dalam Euro
+`player_tags` : Tag atau karakteristik khusus pemain (misalnya, "Pemain Bintang", "Wonderkid")
+`team_position` : Posisi pemain dalam formasi tim
+`team_jersey_number` : Nomor punggung jersey pemain di klub
+`loaned_from` : Nama klub asal jika pemain sedang dipinjamkan
+`joined` : Tanggal pemain bergabung dengan klub saat ini
+`contract_valid_until` : Tahun kontrak pemain berakhir
+`nation_position` : Posisi pemain di tim nasional
+`nation_jersey_number` : Nomor punggung jersey pemain di tim nasional
+`pace` : Atribut kecepatan pemain secara keseluruhan (PAC)
+`shooting` : Atribut kemampuan menembak pemain secara keseluruhan (SHO)
+`passing` : Atribut kemampuan mengumpan pemain secara keseluruhan (PAS)
+`dribbling` : Atribut kemampuan menggiring bola pemain secara keseluruhan (DRI)
+`defending` : Atribut kemampuan bertahan pemain secara keseluruhan (DEF)
+`physic` : Atribut fisik pemain secara keseluruhan (PHY)
+`gk_diving` : Atribut kiper: kemampuan menyelam (Diving)
+`gk_handling` : Atribut kiper: kemampuan menangkap bola (Handling)
+`gk_kicking` : Atribut kiper: kemampuan menendang bola (Kicking)
+`gk_reflexes` : Atribut kiper: kemampuan refleks (Reflexes)
+`gk_speed` : Atribut kiper: kecepatan (Speed)
+`gk_positioning` : Atribut kiper: kemampuan posisi (Positioning)
+`player_traits` : Sifat atau karakteristik tambahan pemain
+`attacking_crossing` : Atribut menyerang: Crossing (akurasi umpan silang)
+`attacking_finishing` : Atribut menyerang: Finishing (akurasi tembakan ke gawang)
+`attacking_heading_accuracy` : Atribut menyerang: Heading Accuracy (akurasi sundulan)
+`attacking_short_passing` : Atribut menyerang: Short Passing (akurasi umpan pendek)
+`attacking_volleys` : Atribut menyerang: Volleys (akurasi tendangan voli)
+`skill_dribbling` : Atribut skill: Dribbling (kemampuan menggiring bola)
+`skill_curve` : Atribut skill: Curve (kemampuan melengkungkan bola)
+`skill_fk_accuracy` : Atribut skill: FK Accuracy (akurasi tendangan bebas)
+`skill_long_passing` : Atribut skill: Long Passing (akurasi umpan jauh)
+`skill_ball_control` : Atribut skill: Ball Control (kontrol bola)
+`movement_acceleration` : Atribut gerakan: Acceleration (akselerasi)
+`movement_sprint_speed` : Atribut gerakan: Sprint Speed (kecepatan lari)
+`movement_agility` : Atribut gerakan: Agility (kelincahan)
+`movement_reactions` : Atribut gerakan: Reactions (reaksi)
+`movement_balance` : Atribut gerakan: Balance (keseimbangan)
+`power_shot_power` : Atribut kekuatan: Shot Power (kekuatan tembakan)
+`power_jumping` : Atribut kekuatan: Jumping (kemampuan melompat)
+`power_stamina` : Atribut kekuatan: Stamina (daya tahan)
+`power_strength` : Atribut kekuatan: Strength (kekuatan fisik)
+`power_long_shots` : Atribut kekuatan: Long Shots (tembakan jarak jauh)
+`mentality_aggression` : Atribut mental: Aggression (agresi)
+`mentality_interceptions` : Atribut mental: Interceptions (kemampuan memotong umpan)
+`mentality_positioning` : Atribut mental: Positioning (penempatan posisi)
+`mentality_vision` : Atribut mental: Vision (visi bermain)
+`mentality_penalties` : Atribut mental: Penalties (kemampuan tendangan penalti)
+`mentality_composure` : Atribut mental: Composure (ketenangan)
+`defending_marking` : Atribut bertahan: Marking (kemampuan menjaga lawan)
+`defending_standing_tackle` : Atribut bertahan: Standing Tackle (tekel berdiri)
+`defending_sliding_tackle` : Atribut bertahan: Sliding Tackle (tekel meluncur)
+`goalkeeping_diving` : Atribut kiper: Diving (menyelam)
+`goalkeeping_handling` : Atribut kiper: Handling (menangkap bola)
+`goalkeeping_kicking` : Atribut kiper: Kicking (menendang bola)
+`goalkeeping_positioning` : Atribut kiper: Positioning (penempatan posisi)
+`goalkeeping_reflexes` : Atribut
 
 ### Exploratory Data Analysis
 
@@ -54,98 +135,183 @@ Berikut adalah beberapa langkah eksplorasi data yang dilakukan untuk memahami ka
 - Pengecekan Tipe Data:
 Tipe data untuk setiap kolom diperiksa menggunakan `player_df. info()`. Ini membantu dalam mengenali variabel yang bersifat numerik dan kategorikal, serta mengidentifikasi kemungkinan masalah terkait tipe data yang tidak sesuai untuk analisis selanjutnya.
 
+- Menampilkan 5 data teratas:
+Menampilkan 5 data teratas menggunakan `player_df.head()`. Ini membantu dalam visualisasi\gambaran isi dari dataset.
+
 - Statistika Deskriptif:
 Statistik deskriptif seperti rata-rata, median, nilai minimum, maksimum, dan deviasi standar dihitung (`player_df. describe()`) untuk memberikan gambaran umum mengenai sebaran nilai pada variabel numerik. Ini memberikan wawasan awal tentang variasi keterampilan pemain dan distribusinya.
 
 - Pengecekan Missing Values:
-Dilakukan perhitungan jumlah nilai yang hilang (`player_df. isnull(). sum()`). Sesuai instruksi, terungkap bahwa ada beberapa kolom yang memiliki nilai yang hilang, dan isu ini perlu ditangani dengan strategi yang tepat selama tahap preprocessing data agar kualitas data dan performa model tetap terjaga.
+Dilakukan perhitungan jumlah nilai yang hilang (`player_df. isnull(). sum()`). Sesuai instruksi, terungkap bahwa ada beberapa kolom yang memiliki nilai yang hilang, dan isu ini perlu ditangani dengan strategi yang tepat selama tahap preprocessing data agar kualitas data dan performa model tetap terjaga. berikut fitur yang masih memiliki data `NaN`,
+```
+fitur jumlah data
+club_name	225
+league_name	225
+league_rank	225
+release_clause_eur	995
+player_tags	17536
+team_position	225
+team_jersey_number	225
+loaned_from	18186
+joined	983
+contract_valid_until	225
+nation_position	17817
+nation_jersey_number	17817
+pace	2083
+shooting	2083
+passing	2083
+dribbling	2083
+defending	2083
+physic	2083
+gk_diving	16861
+gk_handling	16861
+gk_kicking	16861
+gk_reflexes	16861
+gk_speed	16861
+gk_positioning	16861
+player_traits	10629
+defending_marking	18944
+```
 
 - Pengecekan Duplikasi Data:
 Dilakukan pemeriksaan terhadap baris yang mungkin terduplikasi (`player_df[player_df. duplicated()]`). Dari hasil eksplorasi awal, tidak ditemukan baris yang terduplikasi, yang menunjukkan bahwa setiap entri adalah representasi pemain yang unik.
 
-- Pembagian Posisi Pemain:
-Variabel `player_position` dibagi menjadi empat kelompok utama yaitu Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`) untuk memudahkan dalam klasifikasi dan memastikan terdapat cukup sampel dalam masing-masing kategori. Ini merupakan langkah krusial untuk mengembangkan model klasifikasi yang seimbang dan sesuai dengan tujuan bisnis.
-
-- Pemetaan Distribusi Posisi:
-Pemetaan distribusi posisi melalui diagram batang bisa memberikan gambaran mengenai proporsi pemain di setiap kategori posisi, yang membantu mengidentifikasi apakah terdapat ketidakseimbangan dalam kelas yang perlu diselesaikan.
-
 ## Data Preparation
 
-1. Mengecek Ringkasan Informasi Dataset
-- Memeriksa rincian informasi dataset dapat dilakukan dengan menggunakan `player_df. info()`.
-- Pengecekan ini bertujuan untuk memahami struktur dari data, mengenali tipe data di setiap kolom, serta menjadi langkah awal yang penting dalam proses pembersihan data dan penanganan nilai yang hilang yang akan dilakukan selanjutnya.
+1. Pengisian nilai `gk_skill` yang kosong pada pemain outfield
+Pemain outfield pada skill `gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning` kosong. Akan tetapi, `gk_skill` bisa ditambahkan menggunakan rata-rata dari `goalkeeping_diving`,`goalkeeping_handling`,`goalkeeping_kicking`,`goalkeeping_positioning`,`goalkeeping_reflexes`. Jadi nilai itu dapat diisi menggunakan syntax seperti ini,
+```
+player_df['gk_skill_alt'] = player_df[['goalkeeping_diving', 'goalkeeping_handling', 'goalkeeping_kicking', 'goalkeeping_positioning', 'goalkeeping_reflexes']].mean(axis=1)
+player_df['gk_skill'] = player_df['gk_skill'].fillna(player_df['gk_skill_alt'])
+player_df.drop(columns=['gk_skill_alt'], inplace=True)
+```
+2. Pengisian nilai `pace`,`shooting`,`passing`,`dribbling`,`defending`,dan `physic` pada pemain berposisi `GK`
+Nilai `pace`,`shooting`,`passing`,`dribbling`,`defending`,dan `physic` untuk pemain `GK` kosong, akan tetapi bisa diisikan menggunakan skill seperti berikut,
+```
+# Pace
+player_df['pace'] = np.where(
+    player_df['is_gk'],
+    player_df[['movement_acceleration', 'movement_sprint_speed']].mean(axis=1),
+    player_df['pace']
+)
 
-2. Mengecek Duplikasi Data
-- Pengecekan untuk mendeteksi adanya data yang sama menggunakan kode `player_df. duplicated(). sum()`.
-- Dalam proyek ini, tidak ditemukan data yang terduplikasi, yang menunjukkan bahwa setiap entri merepresentasikan pemain yang unik.
-- Memeriksa duplikasi data dilakukan untuk memastikan tidak ada data yang berulang, karena adanya data ganda dapat mempengaruhi hasil analisis statistik, yang berpotensi menghasilkan kesimpulan yang menyesatkan. Proses ini sangat penting untuk mendapatkan representasi data yang tepat, efisien, dan sesuai untuk pengambilan keputusan yang baik.
+# Shooting
+player_df['shooting'] = np.where(
+    player_df['is_gk'],
+    player_df[['attacking_finishing', 'attacking_volleys', 'power_shot_power', 'power_long_shots', 'mentality_penalties']].mean(axis=1),
+    player_df['shooting']
+)
 
-3. Pemeriksaan dan Penanganan Nilai Kosong (Missing Values)
-- Untuk memeriksa nilai yang hilang, dapat digunakan `player_df. isnull(). sum()`.
-- Meskipun pada pemeriksaan awal `player_df. isnull(). sum()` menunjukkan banyaknya nilai kosong di berbagai kolom, nilai hilang untuk fitur keterampilan yang akan digunakan setelah proses pemilihan fitur akan ditangani secara spesifik. Dalam proyek ini, kolom keterampilan khusus untuk penjaga gawang (`gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning`) yang memiliki nilai kosong akan diisi dengan rata-rata dari kolom `goalkeeping_`.
-- Nilai yang hilang dapat mengganggu proses pelatihan model dan mengakibatkan prediksi yang tidak akurat. Oleh sebab itu, penanganan seperti imputasi (pengisian nilai) atau penghapusan baris/kolom sangat diperlukan untuk memastikan bahwa data lengkap dan berkualitas sebelum pelatihan model dilakukan.
-4. Pengelompokan Posisi Pemain (_Position Grouping_)
-   - Teknik: Feature Engineering (pengelompokan kategori).
-   - Penjelasan Proses: Kolom `player_position` pada dataset awal memiliki banyak variasi posisi spesifik. Untuk menyederhanakan target klasifikasi, posisi-posisi ini dikelompokkan ke dalam empat kategori utama: Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`).
-   - Alasan Diperlukan: Pengelompokan ini penting untuk mengurangi jumlah kelas target yang terlalu banyak, yang bisa menyebabkan masalah imbalance data dan menyulitkan model untuk belajar. Dengan mengelompokkan posisi, model dapat belajar pola yang lebih umum untuk kategori posisi yang lebih besar, menjadikan klasifikasi lebih robust dan relevan dengan konteks tim.
-  
-5. Pemilihan Fitur Utama (_Feature Selection_)
-   - Teknik: Pemilihan subset fitur.
-   - Penjelasan Proses: Hanya kolom-kolom yang secara langsung merepresentasikan skill kunci pemain (`pace`, `shooting`, `passing`, `dribbling`, `defending`, `physic`, dan `goalkeeping`) yang dipilih sebagai variabel independen (`skill`) untuk model. Kolom `position_group` yang telah dibuat pada tahap sebelumnya akan menjadi variabel target (target variable).
-   - Alasan Diperlukan: Fokus pada fitur skill yang paling relevan memastikan bahwa model belajar dari informasi yang paling penting untuk membedakan posisi pemain. Hal ini juga membantu mengurangi noise dan kompleksitas model, serta meningkatkan interpretasi hasil.
+# Passing
+player_df['passing'] = np.where(
+    player_df['is_gk'],
+    player_df[['attacking_crossing', 'attacking_short_passing', 'skill_curve', 'skill_fk_accuracy', 'skill_long_passing', 'mentality_vision']].mean(axis=1),
+    player_df['passing']
+)
+
+# Defending
+player_df['defending'] = np.where(
+    player_df['is_gk'],
+    player_df[['defending_marking', 'defending_standing_tackle', 'defending_sliding_tackle', 'mentality_interceptions']].mean(axis=1),
+    player_df['defending']
+)
+
+# Physic
+player_df['physic'] = np.where(
+    player_df['is_gk'],
+    player_df[['power_strength', 'power_stamina', 'power_jumping', 'mentality_aggression', 'movement_balance']].mean(axis=1),
+    player_df['physic']
+)
+
+# Dribbling
+player_df['dribbling'] = np.where(
+    player_df['is_gk'],
+    player_df[['skill_dribbling', 'skill_ball_control', 'movement_agility', 'movement_reactions', 'mentality_composure', 'attacking_heading_accuracy']].mean(axis=1),
+    player_df['dribbling']
+)
+```
+3. Mengelompokkan fitur `skill` agar mempermudah dalam klasifikasi
+Fitur yang digunakan untuk klasifikasi yaitu `pace`,`shooting`,`passing`,`dribbling`,`defending`, `physic`, dan `gk_skill`. Mengapa fitur-fitur tersebut yang digunakan? karena fitur tersebut yang menginterpretasikan kemampuan pemain.
+
+4. Melihat distribusi `skill` setiap pemain
+Dengan code ini,
+```
+fig, axes = plt.subplots(nrows=1, ncols=len(skill), figsize=(20, 5))
+fig.suptitle('Distribusi Skill Pemain per Kategori Skill', fontsize=16)
+
+for i, col in enumerate(skill):
+    sns.histplot(player_df[col], ax=axes[i], kde=True)
+    axes[i].set_title(col.replace('_', ' ').title())
+    axes[i].set_ylabel('Frekuensi')
+
+plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+plt.show()
+```
+Didapat bahwasannya semua fiturnya bisa dikatakan berdistribusi normal, akan tetapi pada `gk_skill` tidak itu dikarenakan adanya gap yang sangat banyak antara pemain outfield dan goalkeeper yang dimana `GK` hanya 2084 dan pemain outfield sisanya. 
+
+5. Pengelompokan Posisi Pemain (_Position Grouping_)
+Kolom `player_position` pada dataset awal memiliki banyak variasi posisi spesifik. Untuk menyederhanakan target klasifikasi, posisi-posisi ini dikelompokkan ke dalam empat kategori utama: Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`). Pengelompokan ini penting untuk mengurangi jumlah kelas target yang terlalu banyak, yang bisa menyebabkan masalah imbalance data dan menyulitkan model untuk belajar. Dengan mengelompokkan posisi, model dapat belajar pola yang lebih umum untuk kategori posisi yang lebih besar, menjadikan klasifikasi lebih robust dan relevan dengan konteks tim.
 
 6. Encoding Variabel Target Kategorikal
-   - Teknik: Label Encoding.
-   - Penjelasan Proses: Variabel target `position_group` yang berisi label teks kategorikal (`GK`, `DF`, `MF`, `FW`) diubah menjadi representasi numerik menggunakan `LabelEncoder` dari `scikit-learn`. Ini diperlukan karena algoritma machine learning sebagian besar hanya dapat memproses data dalam format numerik.
-   - Alasan Diperlukan: Label Encoding mengubah label kategorikal menjadi nilai numerik, yang memungkinkan model untuk memproses dan belajar dari variabel target tersebut.
-  
-7. Pemisahan Data Latih dan Data Uji
-   - Teknik: Data Splitting (menggunakan  `train_test_split`).
-   - Penjelasan Proses: Dataset yang telah bersih dan disiapkan kemudian dibagi menjadi dua bagian: data latih (training data) dan data uji (testing data). Pada proyek ini, 80% data dialokasikan untuk data latih dan 20% untuk data uji. Pembagian ini dilakukan dengan `random_state` yang tetap untuk memastikan reproduksibilitas hasil dan `stratify` agar mengambil data untuk variabel targetnya seimbang.
-   - Alasan Diperlukan: Pembagian data ini sangat penting untuk mengevaluasi kinerja model secara objektif. Model hanya akan dilatih menggunakan data latih dan kemudian kinerjanya diukur pada data uji yang belum pernah dilihat model sebelumnya. Ini membantu mengukur kemampuan generalisasi model dan mendeteksi masalah overfitting.
+Variabel target `position_group` yang berisi label teks kategorikal (`GK`, `DF`, `MF`, `FW`) diubah menjadi representasi numerik menggunakan `LabelEncoder` dari `scikit-learn`. Ini diperlukan karena algoritma machine learning sebagian besar hanya dapat memproses data dalam format numerik. Label Encoding mengubah label kategorikal menjadi nilai numerik, yang memungkinkan model untuk memproses dan belajar dari variabel target tersebut.
+
+7. Pemilihan variabel uji dan target
+Ditemtukan variabel yang digunkaan untuk menguji yaitu `skill` yang berisikan `pace`,`shooting`,`passing`,`dribbling`,`defending`, `physic`, dan `gk_skill`. Lalu untuk variabel targetnya yaitu `position_group_encoded`.
 
 8. Skala Fitur Numerik (Feature Scaling)
-   - Teknik: Standardization (menggunakan `StandardScaler`).
-   - Penjelasan Proses: Fitur-fitur numerik (variabel skill pemain) yang telah dipilih kemudian diskalakan menggunakan `StandardScaler`. Proses ini mengubah nilai-nilai fitur sehingga memiliki mean 0 dan standar deviasi 1. Scaling dilakukan pada data latih (`fit_transform`) dan kemudian diterapkan pada data uji (transform) untuk mencegah data leakage.
-   - Alasan Diperlukan: Banyak algoritma machine learning, terutama yang berbasis jarak seperti K-Nearest Neighbors (KNN), sangat sensitif terhadap skala fitur. Standardisasi membantu menyeimbangkan kontribusi setiap fitur, memastikan semua fitur memberikan kontribusi yang adil pada proses pelatihan model, dan seringkali meningkatkan kecepatan konvergensi serta performa model.
+Fitur-fitur numerik (variabel skill pemain) yang telah dipilih kemudian diskalakan menggunakan `StandardScaler`. Proses ini mengubah nilai-nilai fitur sehingga memiliki mean 0 dan standar deviasi 1. Scaling dilakukan pada data latih (`fit_transform`) dan kemudian diterapkan pada data uji (transform) untuk mencegah data leakage. Banyak algoritma machine learning, terutama yang berbasis jarak seperti K-Nearest Neighbors (KNN), sangat sensitif terhadap skala fitur. Standardisasi membantu menyeimbangkan kontribusi setiap fitur, memastikan semua fitur memberikan kontribusi yang adil pada proses pelatihan model, dan seringkali meningkatkan kecepatan konvergensi serta performa model.
+
+9. Pemisahan Data Latih dan Data Uji
+Dataset yang telah bersih dan disiapkan kemudian dibagi menjadi dua bagian: data latih (training data) dan data uji (testing data) menggunakan `train_test_split`. Pada proyek ini, 80% data dialokasikan untuk data latih dan 20% untuk data uji. Pembagian ini dilakukan dengan `random_state` yang tetap untuk memastikan reproduksibilitas hasil dan `stratify` agar mengambil data untuk variabel targetnya seimbang. Pembagian data ini sangat penting untuk mengevaluasi kinerja model secara objektif. Model hanya akan dilatih menggunakan data latih dan kemudian kinerjanya diukur pada data uji yang belum pernah dilihat model sebelumnya. Ini membantu mengukur kemampuan generalisasi model dan mendeteksi masalah overfitting.
 
 ## Modeling
 
 Tahap Modeling merupakan inti dari proyek machine learning ini, di mana model-model klasifikasi dibangun dan dilatih untuk menyelesaikan permasalahan penentuan posisi pemain sepak bola. Dalam proyek ini, dua algoritma machine learning yang berbeda, yaitu K-Nearest Neighbors (KNN) dan Random Forest, dipilih untuk dibandingkan performanya.
 
 1. Pembuatan Model K-Nearest Neighbors (KNN)
-   - Penjelasan Tahapan dan Parameter:
-     - Inisialisasi Model: Model KNN diinisialisasi menggunakan `KNeighborsClassifier()` dari `sklearn.neighbors`.
-     - Hyperparameter Tuning untuk `n_neighbors`: Untuk menemukan jumlah tetangga (`n_neighbors`) yang paling optimal, dilakukan iterasi dari `k = 1` hingga `k = 20`. Untuk setiap nilai k, model KNN dilatih pada `X_train` dan akurasinya diukur pada `X_test`. Akurasi disimpan dan nilai k dengan akurasi tertinggi dicatat sebagai best_k.
-     - Model Optimal: Model KNN akhir (`knn_optimal`) diinisialisasi kembali dengan `best_k` yang telah ditemukan dan dilatih pada seluruh data latih (`X_train`, `y_train`).
-     - Tujuan Parameter `n_neighbors`: Parameter ini menentukan berapa banyak tetangga terdekat yang akan dipertimbangkan dalam proses klasifikasi. Pemilihan `n_neighbors` yang tepat sangat penting karena memengaruhi bias-variance tradeoff model. Nilai k yang terlalu kecil dapat menyebabkan `overfitting`, sementara nilai k yang terlalu besar dapat menyebabkan `underfitting`.
-    - Kelebihan KNN:
-      - Sederhana dan Mudah Diinterpretasikan: Konsep dasarnya intuitif dan mudah dipahami.
-      - Non-parametrik: Tidak membuat asumsi tentang distribusi data, sehingga fleksibel untuk berbagai jenis data.
-      - Efektif untuk Dataset Kecil: Dapat bekerja dengan baik pada dataset yang tidak terlalu besar.
-    - Kekurangan KNN:
-      - Sensitif terhadap Outlier dan Noise: Keberadaan `outlier` atau `noise` dapat sangat memengaruhi penentuan tetangga terdekat dan akurasi klasifikasi.
-      - Komputasi Mahal: Membutuhkan komputasi yang tinggi, terutama pada dataset besar, karena perlu menghitung jarak ke setiap titik data pada tahap prediksi.
-      - Sensitif terhadap Skala Fitur: Perlu feature scaling (seperti standardisasi) agar fitur dengan rentang nilai yang besar tidak mendominasi perhitungan jarak.
-      - Kinerja Menurun pada Dimensi Tinggi (Curse of Dimensionality): Akurasi cenderung menurun pada dataset dengan banyak fitur (dimensi tinggi) karena konsep jarak menjadi kurang bermakna.
+Algoritma K-Nearest Neighbors (KNN) adalah metode klasifikasi non-parametrik yang bekerja dengan mengklasifikasikan titik data baru berdasarkan mayoritas kelas dari 'k' tetangga terdekatnya dalam ruang fitur. Dalam konteks klasifikasi pemain, misalnya untuk mengklasifikasikan pemain berdasarkan kesamaan skill dengan pemain yang sudah memiliki posisi yang diketahui, KNN akan mengukur kesamaan antar pemain. Kesamaan ini diukur menggunakan metrik jarak, seperti jarak Euclidean, yang menghitung jarak 'garis lurus' antara dua titik dalam ruang multidimensional (dalam hal ini, skill-skill pemain menjadi dimensi).
+
+Secara spesifik, cara kerja KNN adalah sebagai berikut: ketika sebuah titik data baru (pemain yang belum diketahui posisinya) ingin diklasifikasikan, algoritma akan menghitung jarak antara titik data baru tersebut dengan semua titik data yang sudah ada (pemain dengan posisi yang diketahui). Setelah itu, algoritma akan mengidentifikasi `k` tetangga terdekat yang memiliki jarak terkecil. Kemudian, titik data baru tersebut akan diberi label kelas berdasarkan voting mayoritas dari `k` tetangga terdekatnya. Misalnya, jika dari 19 tetangga terdekat, 15 di antaranya adalah penyerang dan 4 adalah gelandang, maka pemain baru tersebut akan diklasifikasikan sebagai penyerang.
+
+```
+k_range = range(1, 30)
+accuracy_scores = []
+
+for k in k_range:
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X_train, y_train)
+    y_pred = knn.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    accuracy_scores.append(accuracy)
+```
+Dalam kode tersebut, kita memulai dengan mendefinisikan rentang nilai `k` (jumlah tetangga terdekat) yang ingin diuji, yaitu dari 1 hingga 29, dan membuat daftar kosong bernama accuracy_scores untuk menyimpan hasil akurasi. Kemudian, sebuah loop for dijalankan, di mana pada setiap iterasi, model KNeighborsClassifier diinisialisasi dengan nilai k yang berbeda. Model ini kemudian dilatih menggunakan data pelatihan (`X_train` dan `y_train`), dan setelah itu, model membuat prediksi (`y_pred`) pada data pengujian (`X_test`). Akurasi dari prediksi tersebut dihitung dengan membandingkan `y_pred` dengan nilai sebenarnya (`y_test`) menggunakan `accuracy_score`, dan nilai akurasi ini ditambahkan ke dalam daftar `accuracy_scores` untuk dicatat dan dianalisis lebih lanjut. Berdasarkan proses hyperparameter tuning yang telah dilakukan, nilai `k` optimal adalah 19. Akurasi testing tertinggi yang dicapai untuk `k=19` adalah 0.8519. 
+
+```
+y_pred_train_knn = knn.predict(X_train)
+accuracy_train_knn = accuracy_score(y_train, y_pred_train_knn)
+print(f"Akurasi KNN pada data training: {accuracy_train_knn:.4f}")
+```
+Dalam kode di atas, akan dilihat akurasi dari training model KNN. Ini dilakukan dengan memprediksi label untuk data training (`X_train`) menggunakan model KNN yang sudah dilatih, di mana hasil prediksinya disimpan dalam `y_pred_train_knn`. Selanjutnya, akurasi training dihitung dengan membandingkan prediksi tersebut (`y_pred_train_knn`) dengan label sebenarnya dari data training (`y_train`) menggunakan `accuracy_score`. Hasil perhitungan menunjukkan bahwa Akurasi KNN pada data training adalah 0.8620, yang berarti model berhasil mengklasifikasikan 86.20% dari sampel data training dengan benar.
 
 2. Pembuatan Model Random Forest
-   - Penjelasan Tahapan dan Parameter:
-     - Inisialisasi Model: Model Random Forest diinisialisasi menggunakan `RandomForestClassifier()` dari `sklearn.ensemble`.
-     - Parameter Default: Model ini dilatih menggunakan parameter default `scikit-learn`, dengan penambahan `random_state=42` untuk memastikan hasil yang konsisten dan dapat direproduksi. Meskipun tidak dilakukan hyperparameter tuning ekstensif pada kode yang diberikan, parameter default Random Forest seringkali sudah memberikan kinerja yang baik.
-     - Potensi Parameter Penting (untuk pengembangan lebih lanjut):
-       - `n_estimators`: Jumlah decision tree dalam forest. Nilai yang lebih tinggi umumnya meningkatkan akurasi tetapi memperlambat pelatihan.
-       - `max_depth`: Kedalaman maksimum dari setiap decision tree. Mengontrol kompleksitas model dan membantu mencegah overfitting.
-       - `min_samples_split`: Jumlah sampel minimum yang dibutuhkan untuk memisahkan sebuah node.
-       - `min_samples_leaf`: Jumlah sampel minimum yang dibutuhkan pada sebuah node daun.
-     - Kelebihan Random Forest:
-       - Akurasi Tinggi: Seringkali memberikan akurasi klasifikasi yang sangat baik.
-       - Robust terhadap Overfitting: Karena sifatnya ensemble dan penggunaan random subset fitur/sampel, Random Forest cenderung tidak overfit dibandingkan decision tree tunggal.
-       - Mampu Menangani Banyak Fitur: Efektif bahkan dengan sejumlah besar fitur dan tidak terlalu sensitif terhadap feature scaling.
-       - Mampu Mengukur Feature Importance: Dapat memberikan informasi tentang seberapa penting setiap fitur dalam proses klasifikasi.
-     - Kekurangan Random Forest:
-       - Kurang Dapat Diinterpretasikan: Sebagai model ensemble, interpretasi bagaimana prediksi dibuat lebih sulit dibandingkan decision tree tunggal.
-       - Memakan Sumber Daya Komputasi: Bisa lambat dalam pelatihan dan prediksi pada dataset yang sangat besar atau dengan jumlah tree yang sangat banyak.
+Algoritma Random Forest adalah metode klasifikasi dan regresi ensemble yang bekerja dengan membangun banyak pohon keputusan selama pelatihan, dan kemudian mengeluarkan kelas yang merupakan modus (untuk klasifikasi) atau rata-rata prediksi (untuk regresi) dari pohon-pohon individual. Dalam konteks klasifikasi pemain, misalnya untuk memprediksi posisi pemain berdasarkan skill mereka, Random Forest akan mengatasi beberapa keterbatasan dari satu pohon keputusan.
+
+Melihat pada kode `rf_model = RandomForestClassifier(random_state=42)` dan `rf_model.fit(X_train, y_train)`, langkah pertama adalah menginisialisasi model Random Forest menggunakan `RandomForestClassifier()`. Parameter `random_state=42` di sini berfungsi untuk memastikan hasil yang konsisten dan dapat direproduksi setiap kali kode dijalankan, karena ini mengunci seed untuk pembangkitan angka acak internal. Setelah inisialisasi, model dilatih menggunakan metode `fit().` Pada tahap ini, `X_train` (data fitur pelatihan) dan `y_train` (label atau target pelatihan) digunakan untuk membangun dan melatih setiap pohon keputusan dalam hutan. Setiap pohon dilatih pada subset data pelatihan yang berbeda (melalui bootstrapping) dan hanya menggunakan subset fitur yang acak saat mencari pemisahan terbaik.
+
+```
+y_pred_train_rf = rf_model.predict(X_train)
+accuracy_train_rf = accuracy_score(y_train, y_pred_train_rf)
+print(f"Akurasi Random Forest pada data training: {accuracy_train_rf:.4f}")
+```
+Dalam kode di atas, kita akan melihat akurasi dari training model Random Forest. Ini dilakukan dengan memprediksi label untuk data training (`X_train`) menggunakan model `rf_model` yang sudah dilatih. Hasil prediksi ini disimpan dalam variabel `y_pred_train_rf`. Selanjutnya, akurasi training dihitung dengan membandingkan prediksi tersebut (`y_pred_train_rf`) dengan label sebenarnya dari data training (`y_train`) menggunakan fungsi `accuracy_score`. Berdasarkan hasil perhitungan, Akurasi Random Forest pada data training adalah 0.9999, yang menunjukkan bahwa model ini sangat akurat dalam mengklasifikasikan data yang telah digunakannya untuk belajar.
+
+```
+y_pred_rf = rf_model.predict(X_test)
+
+accuracy_rf = accuracy_score(y_test, y_pred_rf)
+print(f"Akurasi Random Forest: {accuracy_rf:.4f}")
+```
+Dalam baris kode tersebut, model Random Forest yang telah dilatih (`rf_model`) digunakan untuk membuat prediksi pada data testing (`X_test`), dengan hasil prediksinya disimpan dalam variabel `y_pred_rf`. Kemudian, akurasi model pada data yang belum pernah dilihat ini (`accuracy_rf`) dihitung dengan membandingkan `y_pred_rf` dengan label sebenarnya dari data testing (`y_test`) menggunakan fungsi `accuracy_score`. Berdasarkan hasil yang diberikan, Akurasi Random Forest adalah 0.8556, yang menunjukkan seberapa baik model ini dapat menggeneralisasi dan memprediksi kelas pada data baru.
 
 3. Pemilihan Model Terbaik
 
