@@ -378,9 +378,6 @@ Dari kedua model klasifikasi, didapatkan nilai akurasi adalah sebagai berikut:
 Berdasarkan hasil akurasi pada data train dan test, diperoleh bahwa model Random Fores memiliki akurasi testing terbaik dibandingkan model KNN. Akan tetapi Random Forest memiliki gap yang sangat jauh antara training dan juga testing, maka dari itu model terbaik yaitu adalah KNN. KNN memiliki akurasi testing yang tinggi dan gap antara training dan testing tidak jauh atau bisa dibilang tidak overfitting. Artinya, model KNN mampu memprediksi target dengan kesalahan yang sangat kecil terhadap apa yang ia pelajari dari datanya.
 
 ## Daftar Referensi
-Tentu, berikut adalah daftar referensi yang Anda minta:
-
-Daftar Referensi
 [1] Aliyarov, Kh., Rikhsivoev, M., Arabboev, M., Begmatov, Sh., Saydiakbarov, S., Nosirov, Kh., & Khamidjonov, Z. (2023). ARTIFICIAL INTELLIGENCE IN PERFORMANCE ANALYSIS OF FOOTBALL MATCHES AND PLAYERS. Uzjournal, 3(19). [[Link ke artikel]](https://www.uzjurnal.uz/2/2023/3/index?issue=19)
 
 [2] Apostolou, K., & Tjortjis, C. (2019). Machine learning for position detection in football. International Conference on Artificial Intelligence and Sports, 103991. [[Link ke artikel]](https://www.researchgate.net/publication/335076326_Machine_Learning_for_Position_Detection_in_Football)
