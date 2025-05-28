@@ -128,31 +128,31 @@ Dataset `players_21.csv` mencakup 18.944 baris (pemain) dan 106 kolom (fitur/var
 - `goalkeeping_positioning` : Atribut kiper: Positioning (penempatan posisi)
 - `goalkeeping_reflexes` : Atribut iper: Reflexes (refleks)
 - ` ls ` : Rating pemain di posisi Left Striker
-` st ` : Rating pemain di posisi Striker
-` rs ` : Rating pemain di posisi Right Striker
-` lw ` : Rating pemain di posisi Left Winger
-` lf ` : Rating pemain di posisi Left Forward
-` cf ` : Rating pemain di posisi Center Forward
-` rf ` : Rating pemain di posisi Right Forward
-` rw ` : Rating pemain di posisi Right Winger
-` lam ` : Rating pemain di posisi Left Attacking Midfielder
-` cam ` : Rating pemain di posisi Central Attacking Midfielder
-` ram ` : Rating pemain di posisi Right Attacking Midfielder
-` lm ` : Rating pemain di posisi Left Midfielder
-` lcm ` : Rating pemain di posisi Left Center Midfielder
-` cm ` : Rating pemain di posisi Center Midfielder
-` rcm ` : Rating pemain di posisi Right Center Midfielder
-` rm ` : Rating pemain di posisi Right Midfielder
-` lwb ` : Rating pemain di posisi Left Wing Back
-` ldm ` : Rating pemain di posisi Left Defensive Midfielder
-` cdm ` : Rating pemain di posisi Central Defensive Midfielder
-` rdm ` : Rating pemain di posisi Right Defensive Midfielder
-` rwb ` : Rating pemain di posisi Right Wing Back
-` lb ` : Rating pemain di posisi Left Back
-` lcb ` : Rating pemain di posisi Left Center Back
-` cb ` : Rating pemain di posisi Center Back
-` rcb ` : Rating pemain di posisi Right Center Back
-` rb ` : Rating pemain di posisi Right Back
+- ` st ` : Rating pemain di posisi Striker
+- ` rs ` : Rating pemain di posisi Right Striker
+- ` lw ` : Rating pemain di posisi Left Winger
+- ` lf ` : Rating pemain di posisi Left Forward
+- ` cf ` : Rating pemain di posisi Center Forward
+- ` rf ` : Rating pemain di posisi Right Forward
+- ` rw ` : Rating pemain di posisi Right Winger
+- ` lam ` : Rating pemain di posisi Left Attacking Midfielder
+- ` cam ` : Rating pemain di posisi Central Attacking Midfielder
+- ` ram ` : Rating pemain di posisi Right Attacking Midfielder
+- ` lm ` : Rating pemain di posisi Left Midfielder
+- ` lcm ` : Rating pemain di posisi Left Center Midfielder
+- ` cm ` : Rating pemain di posisi Center Midfielder
+- ` rcm ` : Rating pemain di posisi Right Center Midfielder
+- ` rm ` : Rating pemain di posisi Right Midfielder
+- ` lwb ` : Rating pemain di posisi Left Wing Back
+- ` ldm ` : Rating pemain di posisi Left Defensive Midfielder
+- ` cdm ` : Rating pemain di posisi Central Defensive Midfielder
+- ` rdm ` : Rating pemain di posisi Right Defensive Midfielder
+- ` rwb ` : Rating pemain di posisi Right Wing Back
+- ` lb ` : Rating pemain di posisi Left Back
+- ` lcb ` : Rating pemain di posisi Left Center Back
+- ` cb ` : Rating pemain di posisi Center Back
+- ` rcb ` : Rating pemain di posisi Right Center Back
+- ` rb ` : Rating pemain di posisi Right Back
 
 ### Exploratory Data Analysis
 
@@ -204,14 +204,16 @@ Dilakukan pemeriksaan terhadap baris yang mungkin terduplikasi (`player_df[playe
 
 ## Data Preparation
 
-1. Pengisian nilai `gk_skill` yang kosong pada pemain outfield
+### Pengisian nilai `gk_skill` yang kosong pada pemain outfield
 Pemain outfield pada skill `gk_diving`, `gk_handling`, `gk_kicking`, `gk_reflexes`, `gk_speed`, dan `gk_positioning` kosong. Akan tetapi, `gk_skill` bisa ditambahkan menggunakan rata-rata dari `goalkeeping_diving`,`goalkeeping_handling`,`goalkeeping_kicking`,`goalkeeping_positioning`,`goalkeeping_reflexes`. Jadi nilai itu dapat diisi menggunakan syntax seperti ini,
 ```
 player_df['gk_skill_alt'] = player_df[['goalkeeping_diving', 'goalkeeping_handling', 'goalkeeping_kicking', 'goalkeeping_positioning', 'goalkeeping_reflexes']].mean(axis=1)
 player_df['gk_skill'] = player_df['gk_skill'].fillna(player_df['gk_skill_alt'])
 player_df.drop(columns=['gk_skill_alt'], inplace=True)
 ```
-2. Pengisian nilai `pace`,`shooting`,`passing`,`dribbling`,`defending`,dan `physic` pada pemain berposisi `GK`
+
+### Pengisian nilai `pace`,`shooting`,`passing`,`dribbling`,`defending`,dan `physic` pada pemain berposisi `GK`
+
 Nilai `pace`,`shooting`,`passing`,`dribbling`,`defending`,dan `physic` untuk pemain `GK` kosong, akan tetapi bisa diisikan menggunakan skill seperti berikut,
 ```
 # Pace
@@ -256,10 +258,12 @@ player_df['dribbling'] = np.where(
     player_df['dribbling']
 )
 ```
-3. Mengelompokkan fitur `skill` agar mempermudah dalam klasifikasi
+### Mengelompokkan fitur `skill` agar mempermudah dalam klasifikasi
+
 Fitur yang digunakan untuk klasifikasi yaitu `pace`,`shooting`,`passing`,`dribbling`,`defending`, `physic`, dan `gk_skill`. Mengapa fitur-fitur tersebut yang digunakan? karena fitur tersebut yang menginterpretasikan kemampuan pemain.
 
-4. Melihat distribusi `skill` setiap pemain
+### Melihat distribusi `skill` setiap pemain
+
 Dengan code ini,
 ```
 fig, axes = plt.subplots(nrows=1, ncols=len(skill), figsize=(20, 5))
@@ -275,19 +279,24 @@ plt.show()
 ```
 Didapat bahwasannya semua fiturnya bisa dikatakan berdistribusi normal, akan tetapi pada `gk_skill` tidak itu dikarenakan adanya gap yang sangat banyak antara pemain outfield dan goalkeeper yang dimana `GK` hanya 2084 dan pemain outfield sisanya. 
 
-5. Pengelompokan Posisi Pemain (_Position Grouping_)
+### Pengelompokan Posisi Pemain (_Position Grouping_)
+
 Kolom `player_position` pada dataset awal memiliki banyak variasi posisi spesifik. Untuk menyederhanakan target klasifikasi, posisi-posisi ini dikelompokkan ke dalam empat kategori utama: Penjaga Gawang (`GK`), Bertahan (`DF`), Gelandang (`MF`), dan Penyerang (`FW`). Pengelompokan ini penting untuk mengurangi jumlah kelas target yang terlalu banyak, yang bisa menyebabkan masalah imbalance data dan menyulitkan model untuk belajar. Dengan mengelompokkan posisi, model dapat belajar pola yang lebih umum untuk kategori posisi yang lebih besar, menjadikan klasifikasi lebih robust dan relevan dengan konteks tim.
 
-6. Encoding Variabel Target Kategorikal
+### Encoding Variabel Target Kategorikal
+
 Variabel target `position_group` yang berisi label teks kategorikal (`GK`, `DF`, `MF`, `FW`) diubah menjadi representasi numerik menggunakan `LabelEncoder` dari `scikit-learn`. Ini diperlukan karena algoritma machine learning sebagian besar hanya dapat memproses data dalam format numerik. Label Encoding mengubah label kategorikal menjadi nilai numerik, yang memungkinkan model untuk memproses dan belajar dari variabel target tersebut.
 
-7. Pemilihan variabel uji dan target
+### Pemilihan variabel uji dan target
+
 Ditemtukan variabel yang digunkaan untuk menguji yaitu `skill` yang berisikan `pace`,`shooting`,`passing`,`dribbling`,`defending`, `physic`, dan `gk_skill`. Lalu untuk variabel targetnya yaitu `position_group_encoded`.
 
-8. Skala Fitur Numerik (Feature Scaling)
+### Skala Fitur Numerik (Feature Scaling)
+
 Fitur-fitur numerik (variabel skill pemain) yang telah dipilih kemudian diskalakan menggunakan `StandardScaler`. Proses ini mengubah nilai-nilai fitur sehingga memiliki mean 0 dan standar deviasi 1. Scaling dilakukan pada data latih (`fit_transform`) dan kemudian diterapkan pada data uji (transform) untuk mencegah data leakage. Banyak algoritma machine learning, terutama yang berbasis jarak seperti K-Nearest Neighbors (KNN), sangat sensitif terhadap skala fitur. Standardisasi membantu menyeimbangkan kontribusi setiap fitur, memastikan semua fitur memberikan kontribusi yang adil pada proses pelatihan model, dan seringkali meningkatkan kecepatan konvergensi serta performa model.
 
-9. Pemisahan Data Latih dan Data Uji
+### Pemisahan Data Latih dan Data Uji
+
 Dataset yang telah bersih dan disiapkan kemudian dibagi menjadi dua bagian: data latih (training data) dan data uji (testing data) menggunakan `train_test_split`. Pada proyek ini, 80% data dialokasikan untuk data latih dan 20% untuk data uji. Pembagian ini dilakukan dengan `random_state` yang tetap untuk memastikan reproduksibilitas hasil dan `stratify` agar mengambil data untuk variabel targetnya seimbang. Pembagian data ini sangat penting untuk mengevaluasi kinerja model secara objektif. Model hanya akan dilatih menggunakan data latih dan kemudian kinerjanya diukur pada data uji yang belum pernah dilihat model sebelumnya. Ini membantu mengukur kemampuan generalisasi model dan mendeteksi masalah overfitting.
 
 ## Modeling
@@ -339,7 +348,7 @@ print(f"Akurasi Random Forest: {accuracy_rf:.4f}")
 ```
 Dalam baris kode tersebut, model Random Forest yang telah dilatih (`rf_model`) digunakan untuk membuat prediksi pada data testing (`X_test`), dengan hasil prediksinya disimpan dalam variabel `y_pred_rf`. Kemudian, akurasi model pada data yang belum pernah dilihat ini (`accuracy_rf`) dihitung dengan membandingkan `y_pred_rf` dengan label sebenarnya dari data testing (`y_test`) menggunakan fungsi `accuracy_score`. Berdasarkan hasil yang diberikan, Akurasi Random Forest adalah 0.8556, yang menunjukkan seberapa baik model ini dapat menggeneralisasi dan memprediksi kelas pada data baru.
 
-3. Pemilihan Model Terbaik
+### Pemilihan Model Terbaik
 
 Berdasarkan kajian mengenai kestabilan akurasi antara data latih dan data uji, serta kemampuan generalisasi, model K-Nearest Neighbors (KNN) dipilih sebagai model yang paling unggul untuk mengklasifikasikan posisi pemain dalam proyek ini.
 
