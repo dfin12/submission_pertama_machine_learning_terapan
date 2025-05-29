@@ -372,7 +372,7 @@ Dari kedua model klasifikasi, didapatkan nilai akurasi adalah sebagai berikut:
 
 |Model|train|test|
 | --- | --- | --- |
-| KNN | 0.8642 | 0.8519 |
+| KNN | 0.8620 | 0.8519 |
 | Random Forest | 0.9999 | 0.8556 |
 
 Berdasarkan hasil akurasi pada data train dan test, diperoleh bahwa model Random Fores memiliki akurasi testing terbaik dibandingkan model KNN. Akan tetapi Random Forest memiliki gap yang sangat jauh antara training dan juga testing, maka dari itu model terbaik yaitu adalah KNN. KNN memiliki akurasi testing yang tinggi dan gap antara training dan testing tidak jauh atau bisa dibilang tidak overfitting. Artinya, model KNN mampu memprediksi target dengan kesalahan yang sangat kecil terhadap apa yang ia pelajari dari datanya.
